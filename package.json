@@ -1,0 +1,17 @@
+{
+  "name": "usdm",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "test": "node --test test/*.test.mjs",
+    "data:monitoring": "node scripts/fetch-monitoring-account.mjs"
+  },
+  "dependencies": {
+    "astro": "6.4.4"
+  },
+  "devDependencies": {}
+}

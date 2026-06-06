@@ -1,0 +1,13 @@
+---
+import LanguagePage from '../components/LanguagePage.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ru from '../content/pages/ru.html?raw';
+import en from '../content/pages/en.html?raw';
+import es from '../content/pages/es.html?raw';
+---
+
+<BaseLayout>
+  <LanguagePage html={ru} />
+  <LanguagePage html={en} />
+  <LanguagePage html={es} />
+</BaseLayout>

@@ -1,0 +1,659 @@
+USDM — USD Montelibero on Stellar
+Skip to content [#content]
+USDM USD Montelibero · Stellar [#ru]
+Источники [#]Trustline [#]Получить / погасить [#]Ончейн [#]Мониторинг [#]FAQ [#]
+RU EN ES
+Официальные данные актива · Stellar Public Network
+USDM
+долларовый токен Montelibero в Stellar
+USDM / USD Montelibero — стабильный токен МТЛ-фонда в сети Stellar. По Monte Wiki и официальному stellar.toml, эмитент фиксирует обязательство обменять USDM один к одному на USDC в Stellar в течение 24 часов после получения заявки держателя.
+Открыть trustline с QR [https://eurmtl.me/asset/USDM]
+Читать оферту USDM [https://montelibero.org/2023/05/12/usdm_token_public_offer/]
+Смотреть в StellarExpert [https://stellar.expert/explorer/public/asset/USDM-GDHDC4GBNPMENZAOBB4NCQ25TGZPDRK6ZGWUGSI22TVFATOLRPSUUSDM]
+1 USDM → 1 USDC Заявленное погашение через МТЛ-фонд в Stellar.
+Issuer фиксирован GDHDC4GB…SUUSDM
+Данные ончейн Supply, trustlines, платежи и рынок через StellarExpert / Horizon.
+USD Montelibero
+USDM on Stellar
+LIVE
+Код
+USDM
+Копировать
+Issuer
+GDHDC4GBNPMENZAOBB4NCQ25TGZPDRK6ZGWUGSI22TVFATOLRPSUUSDM
+Копировать
+Home domain
+mtl.montelibero.org
+Копировать
+Сеть
+Stellar Public
+Копировать
+Оферта
+https://montelibero.org/2023/05/12/usdm_token_public_offer/
+Копировать
+Открыть trustline с QR [https://eurmtl.me/asset/USDM]
+StellarExpert [https://stellar.expert/explorer/public/asset/USDM-GDHDC4GBNPMENZAOBB4NCQ25TGZPDRK6ZGWUGSI22TVFATOLRPSUUSDM]
+stellar.toml [https://raw.githubusercontent.com/montelibero-org/mtl/master/.well-known/stellar.toml]
+Где всё проверяется
+Ниже — не “поищите сами”, а прямые рабочие входы: юридическая оферта, Monte Wiki, официальный GitHub/stellar.toml, проверенная страница QR для trustline, explorer и рынок.
+Публичная оферта USDM
+Юридический текст токена USDM на Montelibero.org. В карточке Montelibero указано, что редакция утверждена решением СП МТЛ-фонда №56 от 28.04.2023, затем была техническая поправка по адресу эмиссии от 19.05.2023 и уточнения условий обмена.
+https://montelibero.org/2023/05/12/usdm_token_public_offer/ [https://montelibero.org/2023/05/12/usdm_token_public_offer/]
+Открыть источник [https://montelibero.org/2023/05/12/usdm_token_public_offer/]
+USDM в Monte Wiki
+Короткая официальная справка: USDM — долларовый стейблкоин Stellar, выпущенный МТЛ-фондом, с обязательством обмена 1:1 на USDC в Stellar в течение суток после заявки.
+https://monte.wiki/ru/USDM [https://monte.wiki/ru/USDM]
+Открыть источник [https://monte.wiki/ru/USDM]
+Официальный stellar.toml
+Файл метаданных anchor-домена mtl.montelibero.org из репозитория montelibero-org/mtl. В нём USDM отмечен как live-актив, указаны issuer, display_decimals, image и описание обязательства.
+https://raw.githubusercontent.com/montelibero-org/mtl/master/.well-known/stellar.toml [https://raw.githubusercontent.com/montelibero-org/mtl/master/.well-known/stellar.toml]
+Открыть источник [https://raw.githubusercontent.com/montelibero-org/mtl/master/.well-known/stellar.toml]
+Репозиторий MTL Fund
+Официальный публичный репозиторий сайта MTL Fund. README описывает фонд, ссылки, контакты и необходимость открыть trustlines для дивидендов, включая USDM.
+https://github.com/montelibero-org/mtl [https://github.com/montelibero-org/mtl]
+Открыть источник [https://github.com/montelibero-org/mtl]
+Проверенный QR для trustline
+Страница eurmtl.me/asset/USDM открывает trustline именно к USDM с issuer GDHDC4…UUSDM и даёт кнопки/QR для Stellar-кошельков.
+https://eurmtl.me/asset/USDM [https://eurmtl.me/asset/USDM]
+Открыть источник [https://eurmtl.me/asset/USDM]
+USDM в StellarExpert
+Explorer-страница с ончейн-сводкой: supply, trustlines, платежи, сделки, рейтинг, флаги авторизации, статус issuer и ссылки на issuer/account.
+https://stellar.expert/explorer/public/asset/USDM-GDHDC4GBNPMENZAOBB4NCQ25TGZPDRK6ZGWUGSI22TVFATOLRPSUUSDM [https://stellar.expert/explorer/public/asset/USDM-GDHDC4GBNPMENZAOBB4NCQ25TGZPDRK6ZGWUGSI22TVFATOLRPSUUSDM]
+Открыть источник [https://stellar.expert/explorer/public/asset/USDM-GDHDC4GBNPMENZAOBB4NCQ25TGZPDRK6ZGWUGSI22TVFATOLRPSUUSDM]
+Trusted MTL assets
+Список доверенных активов экосистемы Montelibero. Нужен как дополнительная точка сверки issuer и домена.
+https://stellar-multisig.montelibero.org/public/assets [https://stellar-multisig.montelibero.org/public/assets]
+Открыть источник [https://stellar-multisig.montelibero.org/public/assets]
+Рынок USDM / USDC
+Прямая ссылка на пару USDM:GDHDC4…UUSDM / USDC:GA5ZSE…KZVN в StellarX.
+https://www.stellarx.com/markets/USDM%3AGDHDC4GBNPMENZAOBB4NCQ25TGZPDRK6ZGWUGSI22TVFATOLRPSUUSDM/USDC%3AGA5ZSEJYB37JRC5AVCIA5MOP4RHTM335X2KGX3IHOJAPP5RE34K4KZVN [https://www.stellarx.com/markets/USDM%3AGDHDC4GBNPMENZAOBB4NCQ25TGZPDRK6ZGWUGSI22TVFATOLRPSUUSDM/USDC%3AGA5ZSEJYB37JRC5AVCIA5MOP4RHTM335X2KGX3IHOJAPP5RE34K4KZVN]
+Открыть источник [https://www.stellarx.com/markets/USDM%3AGDHDC4GBNPMENZAOBB4NCQ25TGZPDRK6ZGWUGSI22TVFATOLRPSUUSDM/USDC%3AGA5ZSEJYB37JRC5AVCIA5MOP4RHTM335X2KGX3IHOJAPP5RE34K4KZVN]
+Баланс МТЛ-фонда
+Официальная страница структуры баланса МТЛ-фонда. Полезна для общего контекста активов и обязательств фонда.
+https://montelibero.org/2022/01/14/mtl-fund-balance-structure/ [https://montelibero.org/2022/01/14/mtl-fund-balance-structure/]
+Открыть источник [https://montelibero.org/2022/01/14/mtl-fund-balance-structure/]
+Что именно продаёт этот сайт
+Страница специально про USDM / USD Montelibero. Тикер USDM используется разными проектами; здесь идентичность определяется сетью Stellar и issuer-адресом.
+$
+Долларовая единица внутри Montelibero
+USDM используется как долларовый расчётный токен в экосистеме Montelibero и в Stellar DEX. Это не банковский счёт и не доллар на балансе пользователя.
+1:1
+Обязательство эмитента
+Формула из Wiki и stellar.toml: эмитент обязуется по заявке держателя обменять USDM на USDC в Stellar один к одному в течение 24 часов.
+ID
+Главное — issuer
+Фейковый актив может иметь тот же код USDM. Настоящий USD Montelibero: code USDM, issuer GDHDC4GBNPMENZAOBB4NCQ25TGZPDRK6ZGWUGSI22TVFATOLRPSUUSDM, domain mtl.montelibero.org.
+≠
+USDM — не USDC
+USDC выпускается другим эмитентом. USDM — отдельный Stellar-актив МТЛ-фонда, который может погашаться в USDC согласно оферте.
+Открытие trustline — через проверенный QR
+Для Stellar-активов, кроме XLM, аккаунт должен явно добавить линию доверия. Для USDM используйте страницу eurmtl.me/asset/USDM: она показывает тот же issuer, что и официальный stellar.toml и StellarExpert.
+Открыть trustline с QR [https://eurmtl.me/asset/USDM]
+Откройте страницу QR
+Перейдите на eurmtl.me/asset/USDM. На странице указано “Opening trustline for token USDM” и issuer GDHDC4…UUSDM.
+Сверьте issuer
+Перед подписью в кошельке убедитесь, что asset code = USDM, issuer = GDHDC4GBNPMENZAOBB4NCQ25TGZPDRK6ZGWUGSI22TVFATOLRPSUUSDM.
+Выберите кошелёк
+Страница даёт варианты “Add to Sunce / Lobstr” и “Add to MMWB”. Также можно сканировать QR, если ваш кошелёк поддерживает Stellar URI.
+Подпишите changeTrust
+Кошелёк создаст операцию changeTrust. Никогда не вводите seed phrase на сайте; подпись должна происходить только внутри вашего кошелька.
+Получайте USDM
+После подтверждения trustline аккаунт сможет принимать USDM, показывать баланс и обменивать токен через Stellar DEX.
+Как получить, обменять и погасить USDM
+Сайт даёт прямые маршруты: покупка через рынок USDM/USDC, получение переводом, открытие trustline и погашение по оферте через МТЛ-фонд.
+Получить / купить
+Откройте trustline к USDM через проверенную QR-страницу.
+Пополните Stellar-кошелёк USDC или XLM.
+Используйте StellarX или другой Stellar DEX-интерфейс для пары USDM/USDC.
+Также USDM можно получить переводом от другого Stellar-аккаунта или в рамках операций экосистемы Montelibero.
+StellarX USDM/USDC [https://www.stellarx.com/markets/USDM%3AGDHDC4GBNPMENZAOBB4NCQ25TGZPDRK6ZGWUGSI22TVFATOLRPSUUSDM/USDC%3AGA5ZSEJYB37JRC5AVCIA5MOP4RHTM335X2KGX3IHOJAPP5RE34K4KZVN]Открыть trustline с QR [https://eurmtl.me/asset/USDM]
+Погасить в USDC
+Юридическая основа — “Токен USDM. Публичная оферта” на Montelibero.org.
+Заявленное правило — обмен USDM на USDC в Stellar 1:1 в течение суток после получения заявки держателя.
+Операционные вопросы по МТЛ-фонду: официальный support bot @mtl_helper_bot.
+После заявки и отправки USDM получатель ожидает обратный перевод равного количества USDC на Stellar-аккаунт, указанный/использованный в заявке.
+Читать оферту USDM [https://montelibero.org/2023/05/12/usdm_token_public_offer/]@mtl_helper_bot [https://t.me/mtl_helper_bot]
+Ончейн-сводка USDM
+Показатели ниже подгружаются из публичных API StellarExpert и Horizon. Если API недоступны, отображается сохранённый снимок с прямыми ссылками на источники.
+Supply
+—
+Trustlines
+—
+Payments
+—
+Trades
+—
+Rating
+—
+First tx
+—
+Best ask USDM/USDC
+—
+Updated
+—
+— Обновить
+StellarExpert [https://stellar.expert/explorer/public/asset/USDM-GDHDC4GBNPMENZAOBB4NCQ25TGZPDRK6ZGWUGSI22TVFATOLRPSUUSDM]Horizon asset [https://horizon.stellar.org/assets?asset_code=USDM&asset_issuer=GDHDC4GBNPMENZAOBB4NCQ25TGZPDRK6ZGWUGSI22TVFATOLRPSUUSDM]API docs [https://stellar.expert/openapi.html]
+Проверить trustline по адресу
+Введите публичный Stellar-адрес. Проверка идёт через Horizon и ничего не подписывает.
+Проверить
+Открыть trustline с QR [https://eurmtl.me/asset/USDM]Issuer account [https://stellar.expert/explorer/public/account/GDHDC4GBNPMENZAOBB4NCQ25TGZPDRK6ZGWUGSI22TVFATOLRPSUUSDM]
+Мониторинговый аккаунт
+Разовый снимок входящих USDM-платежей на публичный Stellar-аккаунт. Таблица агрегирует только полные месяцы и показывает годовой процент к базе 1000 USDM.
+Аккаунт
+GCLQ6TKO…ENUMON [https://stellar.expert/explorer/public/account/GCLQ6TKOOJW33ABVG5D5KKJBZANSDW46BCXTSQ3TKLRYFPAVFZENUMON]
+Текущий баланс
+—
+Всего выплат
+—
+Период
+—
+Месяц
+Платежей
+USDM
+% годовых
+Показать все Открыть аккаунт в StellarExpert [https://stellar.expert/explorer/public/account/GCLQ6TKOOJW33ABVG5D5KKJBZANSDW46BCXTSQ3TKLRYFPAVFZENUMON]JSON-снимок [data/monitoring-account.json]
+Для разработчиков и интеграций
+Константы можно использовать в кошельке, платёжной форме, боте или мерчант-виджете. Сайт не требует сборки и не хранит ключи.
+Копировать const USDM = {
+network: 'Public Global Stellar Network ; September 2015',
+code: 'USDM',
+issuer: 'GDHDC4GBNPMENZAOBB4NCQ25TGZPDRK6ZGWUGSI22TVFATOLRPSUUSDM',
+assetId: 'USDM-GDHDC4GBNPMENZAOBB4NCQ25TGZPDRK6ZGWUGSI22TVFATOLRPSUUSDM',
+homeDomain: 'mtl.montelibero.org',
+offer: 'https://montelibero.org/2023/05/12/usdm_token_public_offer/',
+trustline: 'https://eurmtl.me/asset/USDM',
+stellarToml: 'https://mtl.montelibero.org/.well-known/stellar.toml',
+stellarExpert: 'https://stellar.expert/explorer/public/asset/USDM-GDHDC4GBNPMENZAOBB4NCQ25TGZPDRK6ZGWUGSI22TVFATOLRPSUUSDM'
+};
+// Horizon: account balances and assets
+// https://horizon.stellar.org/accounts/{PUBLIC_KEY}
+// https://horizon.stellar.org/assets?asset_code=USDM&asset_issuer=GDHDC4GBNPMENZAOBB4NCQ25TGZPDRK6ZGWUGSI22TVFATOLRPSUUSDM
+// StellarExpert API: asset info, rating, holders, supply
+// https://api.stellar.expert/explorer/public/asset/USDM-GDHDC4GBNPMENZAOBB4NCQ25TGZPDRK6ZGWUGSI22TVFATOLRPSUUSDM/supply
+Integration notes
+Asset identity в Stellar — это всегда code + issuer, а не один тикер.
+Для приёма USDM мерчант должен открыть trustline на receiving account.
+Для платёжной формы показывайте QR адреса получателя и memo, если он нужен вашей бухгалтерии.
+Для публичной статистики используйте StellarExpert API и Horizon; для операций подписи — официальный SDK Stellar или кошелёк пользователя.
+stellar.toml [https://raw.githubusercontent.com/montelibero-org/mtl/master/.well-known/stellar.toml]StellarExpert API [https://stellar.expert/openapi.html]
+Риски и важные технические факты
+Этот блок лучше оставить на сайте: он повышает доверие и снижает шанс, что пользователь перепутает USDM с другим активом.
+Эмитентский риск
+Погашение 1:1 основано на обязательстве МТЛ-фонда. Это не USDC от Circle и не банковский депозит.
+Ликвидность и цена DEX
+Рынок Stellar DEX может показывать цену выше или ниже 1 USDC из-за заявок и объёма ликвидности. Погашение по оферте — отдельный механизм.
+Не путать тикеры
+USDM на CoinMarketCap/CoinGecko обычно относится к другим проектам. Для USD Montelibero важны Stellar, issuer GDHDC4…UUSDM и domain mtl.montelibero.org.
+Issuer unlocked / unlimited
+StellarExpert показывает issuer account lock status: unlocked, а stellar.toml содержит is_unlimited=true. Значит, технический hard cap не является механизмом доверия; ключевое — правила эмитента и публичная отчётность.
+Самостоятельное хранение
+Stellar-транзакции необратимы. Потеря seed phrase или отправка на неправильный адрес обычно не восстанавливаются.
+Регуляторика
+В разных юрисдикциях токены и стейблкоины могут регулироваться по-разному. Для коммерческого использования стоит отдельно оценить свои юридические и налоговые обязанности.
+FAQ
+Короткие ответы для пользователя, который впервые видит USDM.
+Что такое USDM?
+USDM / USD Montelibero — долларовый стейблкоин в сети Stellar, выпущенный МТЛ-фондом. По официальным источникам, эмитент обязуется обменивать его на USDC 1:1 в Stellar в течение суток после заявки держателя.
+Где официальная оферта?
+Прямая ссылка: https://montelibero.org/2023/05/12/usdm_token_public_offer/ [https://montelibero.org/2023/05/12/usdm_token_public_offer/]. На сайте она обозначена как “Токен USDM. Публичная оферта”.
+Где официальный GitHub?
+Репозиторий MTL Fund: https://github.com/montelibero-org/mtl [https://github.com/montelibero-org/mtl]. Метаданные актива опубликованы в .well-known/stellar.toml.
+Как открыть trustline?
+Нажмите “Открыть trustline с QR” или перейдите на https://eurmtl.me/asset/USDM [https://eurmtl.me/asset/USDM]. Сверьте issuer и подпишите changeTrust в своём кошельке.
+Почему Stellar требует trustline?
+В Stellar любой issued asset, кроме XLM, требует явного trustline к конкретному issuer. Это защищает пользователя от случайного получения произвольных активов.
+USDM — это USDC?
+Нет. USDC — отдельный токен другого эмитента. USDM — токен МТЛ-фонда, который по оферте может обмениваться на USDC.
+Можно ли купить USDM за USDC?
+Да, через Stellar DEX, например по прямой ссылке на StellarX USDM/USDC. Рыночный курс зависит от ордербука.
+Как не купить фейк?
+Проверяйте три поля одновременно: code = USDM, issuer = GDHDC4GBNPMENZAOBB4NCQ25TGZPDRK6ZGWUGSI22TVFATOLRPSUUSDM, domain = mtl.montelibero.org.
+Сайт просит seed phrase?
+Нет и не должен. Для trustline и платежей подпись происходит в кошельке. Любой сайт, который просит seed phrase, опасен.
+Куда обращаться по вопросам МТЛ-фонда?
+В README MTL Fund указан support bot: @mtl_helper_bot [https://t.me/mtl_helper_bot]. Для юридической основы USDM используйте оферту USDM.
+USDM / USD Montelibero
+Статический справочный сайт по USDM / USD Montelibero. Не хранит ключи, не принимает средства, не является кошельком.
+Offer [https://montelibero.org/2023/05/12/usdm_token_public_offer/]
+Wiki [https://monte.wiki/ru/USDM]
+GitHub [https://github.com/montelibero-org/mtl]
+Trustline [https://eurmtl.me/asset/USDM]
+StellarExpert [https://stellar.expert/explorer/public/asset/USDM-GDHDC4GBNPMENZAOBB4NCQ25TGZPDRK6ZGWUGSI22TVFATOLRPSUUSDM]
+USDM USD Montelibero · Stellar [#en]
+Sources [#]Trustline [#]Get / redeem [#]On-chain [#]Monitoring [#]FAQ [#]
+RU EN ES
+Official asset data · Stellar Public Network
+USDM
+Montelibero’s dollar token on Stellar
+USDM / USD Montelibero is a stable token of the MTL Fund on Stellar. According to Monte Wiki and the official stellar.toml, the issuer records an obligation to exchange USDM one-for-one for USDC on Stellar within 24 hours after receiving an application from the holder.
+Open trustline with QR [https://eurmtl.me/asset/USDM]
+Read the USDM offer [https://montelibero.org/2023/05/12/usdm_token_public_offer/]
+View on StellarExpert [https://stellar.expert/explorer/public/asset/USDM-GDHDC4GBNPMENZAOBB4NCQ25TGZPDRK6ZGWUGSI22TVFATOLRPSUUSDM]
+1 USDM → 1 USDC Stated redemption route through the MTL Fund on Stellar.
+Fixed issuer GDHDC4GB…SUUSDM
+On-chain data Supply, trustlines, payments and market data via StellarExpert / Horizon.
+USD Montelibero
+USDM on Stellar
+LIVE
+Code
+USDM
+Copy
+Issuer
+GDHDC4GBNPMENZAOBB4NCQ25TGZPDRK6ZGWUGSI22TVFATOLRPSUUSDM
+Copy
+Home domain
+mtl.montelibero.org
+Copy
+Network
+Stellar Public
+Copy
+Offer
+https://montelibero.org/2023/05/12/usdm_token_public_offer/
+Copy
+Open trustline with QR [https://eurmtl.me/asset/USDM]
+StellarExpert [https://stellar.expert/explorer/public/asset/USDM-GDHDC4GBNPMENZAOBB4NCQ25TGZPDRK6ZGWUGSI22TVFATOLRPSUUSDM]
+stellar.toml [https://raw.githubusercontent.com/montelibero-org/mtl/master/.well-known/stellar.toml]
+Where to verify everything
+Direct entry points: the legal offer, Monte Wiki, official GitHub/stellar.toml, the verified trustline QR page, explorer pages and the USDM/USDC market.
+USDM public offer
+The legal text for the USDM token on Montelibero.org. The Montelibero listing says the version was approved by MTL Fund Signers Council decision №56 on 28 Apr 2023, then a technical amendment changed the issuing address on 19 May 2023, with later clarifications of exchange terms.
+https://montelibero.org/2023/05/12/usdm_token_public_offer/ [https://montelibero.org/2023/05/12/usdm_token_public_offer/]
+Open source [https://montelibero.org/2023/05/12/usdm_token_public_offer/]
+USDM in Monte Wiki
+A concise official reference: USDM is a dollar stablecoin on Stellar, issued by the MTL Fund, with a 24-hour one-for-one USDC redemption obligation after a holder request.
+https://monte.wiki/ru/USDM [https://monte.wiki/ru/USDM]
+Open source [https://monte.wiki/ru/USDM]
+Official stellar.toml
+The anchor-domain metadata file for mtl.montelibero.org from the montelibero-org/mtl repo. It marks USDM as live and contains issuer, decimals, image and the obligation description.
+https://raw.githubusercontent.com/montelibero-org/mtl/master/.well-known/stellar.toml [https://raw.githubusercontent.com/montelibero-org/mtl/master/.well-known/stellar.toml]
+Open source [https://raw.githubusercontent.com/montelibero-org/mtl/master/.well-known/stellar.toml]
+MTL Fund repository
+The public repository for the MTL Fund site. Its README describes the fund, links, contacts and trustlines for dividends including USDM.
+https://github.com/montelibero-org/mtl [https://github.com/montelibero-org/mtl]
+Open source [https://github.com/montelibero-org/mtl]
+Verified trustline QR
+The eurmtl.me/asset/USDM page opens a trustline specifically for USDM with issuer GDHDC4…UUSDM and provides wallet buttons/QR.
+https://eurmtl.me/asset/USDM [https://eurmtl.me/asset/USDM]
+Open source [https://eurmtl.me/asset/USDM]
+USDM on StellarExpert
+Explorer page with on-chain summary: supply, trustlines, payments, trades, rating, authorization flags, issuer status and account links.
+https://stellar.expert/explorer/public/asset/USDM-GDHDC4GBNPMENZAOBB4NCQ25TGZPDRK6ZGWUGSI22TVFATOLRPSUUSDM [https://stellar.expert/explorer/public/asset/USDM-GDHDC4GBNPMENZAOBB4NCQ25TGZPDRK6ZGWUGSI22TVFATOLRPSUUSDM]
+Open source [https://stellar.expert/explorer/public/asset/USDM-GDHDC4GBNPMENZAOBB4NCQ25TGZPDRK6ZGWUGSI22TVFATOLRPSUUSDM]
+Trusted MTL assets
+A trusted assets list for the Montelibero ecosystem, useful as an extra check of the issuer and domain.
+https://stellar-multisig.montelibero.org/public/assets [https://stellar-multisig.montelibero.org/public/assets]
+Open source [https://stellar-multisig.montelibero.org/public/assets]
+USDM / USDC market
+Direct link to the USDM:GDHDC4…UUSDM / USDC:GA5ZSE…KZVN pair on StellarX.
+https://www.stellarx.com/markets/USDM%3AGDHDC4GBNPMENZAOBB4NCQ25TGZPDRK6ZGWUGSI22TVFATOLRPSUUSDM/USDC%3AGA5ZSEJYB37JRC5AVCIA5MOP4RHTM335X2KGX3IHOJAPP5RE34K4KZVN [https://www.stellarx.com/markets/USDM%3AGDHDC4GBNPMENZAOBB4NCQ25TGZPDRK6ZGWUGSI22TVFATOLRPSUUSDM/USDC%3AGA5ZSEJYB37JRC5AVCIA5MOP4RHTM335X2KGX3IHOJAPP5RE34K4KZVN]
+Open source [https://www.stellarx.com/markets/USDM%3AGDHDC4GBNPMENZAOBB4NCQ25TGZPDRK6ZGWUGSI22TVFATOLRPSUUSDM/USDC%3AGA5ZSEJYB37JRC5AVCIA5MOP4RHTM335X2KGX3IHOJAPP5RE34K4KZVN]
+MTL Fund balance
+Official balance-structure page for the MTL Fund, useful for broader context on the fund’s assets and obligations.
+https://montelibero.org/2022/01/14/mtl-fund-balance-structure/ [https://montelibero.org/2022/01/14/mtl-fund-balance-structure/]
+Open source [https://montelibero.org/2022/01/14/mtl-fund-balance-structure/]
+What this site is about
+This page is specifically about USDM / USD Montelibero. The ticker USDM is used by multiple projects; here the identity is the Stellar network plus the issuer address.
+$
+A dollar unit inside Montelibero
+USDM is used as a dollar-denominated settlement token in the Montelibero ecosystem and on Stellar DEX. It is not a bank account or a dollar balance in your name.
+1:1
+Issuer obligation
+The formula from Wiki and stellar.toml: upon holder request, the issuer undertakes to exchange USDM one-for-one for USDC on Stellar within 24 hours.
+ID
+Issuer matters most
+A fake asset can use the same code USDM. The real USD Montelibero is: code USDM, issuer GDHDC4GBNPMENZAOBB4NCQ25TGZPDRK6ZGWUGSI22TVFATOLRPSUUSDM, domain mtl.montelibero.org.
+≠
+USDM is not USDC
+USDC is issued by another issuer. USDM is a separate Stellar asset of the MTL Fund that can be redeemed for USDC under the offer.
+Open the trustline through the verified QR page
+For Stellar assets except XLM, an account must explicitly add a trustline. For USDM, use eurmtl.me/asset/USDM: it shows the same issuer as the official stellar.toml and StellarExpert.
+Open trustline with QR [https://eurmtl.me/asset/USDM]
+Open the QR page
+Go to eurmtl.me/asset/USDM. The page says “Opening trustline for token USDM” and shows issuer GDHDC4…UUSDM.
+Verify the issuer
+Before signing in your wallet, make sure asset code = USDM and issuer = GDHDC4GBNPMENZAOBB4NCQ25TGZPDRK6ZGWUGSI22TVFATOLRPSUUSDM.
+Choose a wallet
+The page provides “Add to Sunce / Lobstr” and “Add to MMWB” options. You can also scan the QR if your wallet supports Stellar URI.
+Sign changeTrust
+Your wallet creates a changeTrust operation. Never enter a seed phrase on a website; signing should happen only inside your wallet.
+Receive USDM
+After confirmation, the account can receive USDM, display balances and trade the token through Stellar DEX.
+How to get, trade and redeem USDM
+Direct routes: buy through the USDM/USDC market, receive by transfer, open a trustline, and redeem under the public offer through the MTL Fund.
+Get / buy
+Open a USDM trustline through the verified QR page.
+Fund your Stellar wallet with USDC or XLM.
+Use StellarX or another Stellar DEX interface for the USDM/USDC pair.
+USDM can also be received by transfer from another Stellar account or through Montelibero ecosystem operations.
+StellarX USDM/USDC [https://www.stellarx.com/markets/USDM%3AGDHDC4GBNPMENZAOBB4NCQ25TGZPDRK6ZGWUGSI22TVFATOLRPSUUSDM/USDC%3AGA5ZSEJYB37JRC5AVCIA5MOP4RHTM335X2KGX3IHOJAPP5RE34K4KZVN]Open trustline with QR [https://eurmtl.me/asset/USDM]
+Redeem to USDC
+Legal basis: “USDM Token Public Offer” on Montelibero.org.
+Stated rule: USDM → USDC on Stellar one-for-one within 24 hours after the holder’s application is received.
+Operational MTL Fund questions: official support bot @mtl_helper_bot.
+After the request and USDM transfer, the holder expects an equal USDC transfer back to the Stellar account specified/used in the request.
+Read the USDM offer [https://montelibero.org/2023/05/12/usdm_token_public_offer/]@mtl_helper_bot [https://t.me/mtl_helper_bot]
+USDM on-chain summary
+The indicators below load from public StellarExpert and Horizon APIs. If the APIs are unavailable, the site shows a saved snapshot and direct source links.
+Supply
+—
+Trustlines
+—
+Payments
+—
+Trades
+—
+Rating
+—
+First tx
+—
+Best ask USDM/USDC
+—
+Updated
+—
+— Refresh
+StellarExpert [https://stellar.expert/explorer/public/asset/USDM-GDHDC4GBNPMENZAOBB4NCQ25TGZPDRK6ZGWUGSI22TVFATOLRPSUUSDM]Horizon asset [https://horizon.stellar.org/assets?asset_code=USDM&asset_issuer=GDHDC4GBNPMENZAOBB4NCQ25TGZPDRK6ZGWUGSI22TVFATOLRPSUUSDM]API docs [https://stellar.expert/openapi.html]
+Check trustline by address
+Enter a public Stellar address. The check uses Horizon and signs nothing.
+Check
+Open trustline with QR [https://eurmtl.me/asset/USDM]Issuer account [https://stellar.expert/explorer/public/account/GDHDC4GBNPMENZAOBB4NCQ25TGZPDRK6ZGWUGSI22TVFATOLRPSUUSDM]
+Monitoring account
+A static snapshot of incoming USDM payments to a public Stellar account. The table includes complete months only and shows the annualized percentage against a 1000 USDM base.
+Account
+GCLQ6TKO…ENUMON [https://stellar.expert/explorer/public/account/GCLQ6TKOOJW33ABVG5D5KKJBZANSDW46BCXTSQ3TKLRYFPAVFZENUMON]
+Current balance
+—
+Total payouts
+—
+Period
+—
+Month
+Payments
+USDM
+Annual %
+Show all Open account in StellarExpert [https://stellar.expert/explorer/public/account/GCLQ6TKOOJW33ABVG5D5KKJBZANSDW46BCXTSQ3TKLRYFPAVFZENUMON]JSON snapshot [data/monitoring-account.json]
+For developers and integrations
+Use these constants in a wallet, payment form, bot or merchant widget. The site requires no build step and stores no keys.
+Copy const USDM = {
+network: 'Public Global Stellar Network ; September 2015',
+code: 'USDM',
+issuer: 'GDHDC4GBNPMENZAOBB4NCQ25TGZPDRK6ZGWUGSI22TVFATOLRPSUUSDM',
+assetId: 'USDM-GDHDC4GBNPMENZAOBB4NCQ25TGZPDRK6ZGWUGSI22TVFATOLRPSUUSDM',
+homeDomain: 'mtl.montelibero.org',
+offer: 'https://montelibero.org/2023/05/12/usdm_token_public_offer/',
+trustline: 'https://eurmtl.me/asset/USDM',
+stellarToml: 'https://mtl.montelibero.org/.well-known/stellar.toml',
+stellarExpert: 'https://stellar.expert/explorer/public/asset/USDM-GDHDC4GBNPMENZAOBB4NCQ25TGZPDRK6ZGWUGSI22TVFATOLRPSUUSDM'
+};
+// Horizon: account balances and assets
+// https://horizon.stellar.org/accounts/{PUBLIC_KEY}
+// https://horizon.stellar.org/assets?asset_code=USDM&asset_issuer=GDHDC4GBNPMENZAOBB4NCQ25TGZPDRK6ZGWUGSI22TVFATOLRPSUUSDM
+// StellarExpert API: asset info, rating, holders, supply
+// https://api.stellar.expert/explorer/public/asset/USDM-GDHDC4GBNPMENZAOBB4NCQ25TGZPDRK6ZGWUGSI22TVFATOLRPSUUSDM/supply
+Integration notes
+In Stellar, asset identity is code + issuer, not the ticker alone.
+To receive USDM, a merchant receiving account must have a trustline.
+For a payment form, show a recipient address QR and memo if your accounting requires it.
+For public statistics use StellarExpert API and Horizon; for signing operations use the official Stellar SDK or the user’s wallet.
+stellar.toml [https://raw.githubusercontent.com/montelibero-org/mtl/master/.well-known/stellar.toml]StellarExpert API [https://stellar.expert/openapi.html]
+Risks and technical facts
+Keep this section on the site: it builds trust and reduces the chance that users confuse USDM with another asset.
+Issuer risk
+The 1:1 redemption is based on an MTL Fund obligation. USDM is not Circle USDC and not a bank deposit.
+Liquidity and DEX price
+Stellar DEX can show a price above or below 1 USDC due to orders and liquidity. Redemption under the offer is a separate mechanism.
+Ticker collisions
+USDM on CoinMarketCap/CoinGecko usually refers to other projects. For USD Montelibero, the key checks are Stellar, issuer GDHDC4…UUSDM and domain mtl.montelibero.org.
+Issuer unlocked / unlimited
+StellarExpert shows issuer account lock status: unlocked, and stellar.toml contains is_unlimited=true. So a hard cap is not the trust mechanism; issuer rules and public reporting matter.
+Self-custody
+Stellar transactions are irreversible. Lost seed phrases or transfers to wrong addresses are usually not recoverable.
+Regulation
+Tokens and stablecoins can be regulated differently across jurisdictions. For commercial use, assess your own legal and tax duties.
+FAQ
+Short answers for a user seeing USDM for the first time.
+What is USDM?
+USDM / USD Montelibero is a dollar stablecoin on Stellar issued by the MTL Fund. Official sources state that the issuer undertakes to redeem it for USDC one-for-one on Stellar within 24 hours after a holder request.
+Where is the official offer?
+Direct link: https://montelibero.org/2023/05/12/usdm_token_public_offer/ [https://montelibero.org/2023/05/12/usdm_token_public_offer/]. On the site it is titled “Токен USDM. Публичная оферта”.
+Where is the official GitHub?
+MTL Fund repository: https://github.com/montelibero-org/mtl [https://github.com/montelibero-org/mtl]. Asset metadata is published in .well-known/stellar.toml.
+How do I open a trustline?
+Click “Open trustline with QR” or go to https://eurmtl.me/asset/USDM [https://eurmtl.me/asset/USDM]. Verify the issuer and sign changeTrust in your wallet.
+Why does Stellar require a trustline?
+On Stellar, every issued asset except XLM requires an explicit trustline to a specific issuer. This prevents users from accidentally receiving arbitrary assets.
+Is USDM the same as USDC?
+No. USDC is a separate token from a different issuer. USDM is an MTL Fund token that can be redeemed for USDC under the offer.
+Can I buy USDM with USDC?
+Yes, through Stellar DEX, for example with the direct StellarX USDM/USDC link. The market rate depends on the order book.
+How do I avoid a fake?
+Check all three fields together: code = USDM, issuer = GDHDC4GBNPMENZAOBB4NCQ25TGZPDRK6ZGWUGSI22TVFATOLRPSUUSDM, domain = mtl.montelibero.org.
+Does this site ask for a seed phrase?
+No, and it should not. Trustline and payment signing happen in a wallet. Any site asking for your seed phrase is dangerous.
+Where do I ask MTL Fund questions?
+The MTL Fund README lists the support bot: @mtl_helper_bot [https://t.me/mtl_helper_bot]. For the legal basis of USDM, use the USDM offer.
+USDM / USD Montelibero
+Static reference site for USDM / USD Montelibero. It stores no keys, receives no funds and is not a wallet.
+Offer [https://montelibero.org/2023/05/12/usdm_token_public_offer/]
+Wiki [https://monte.wiki/ru/USDM]
+GitHub [https://github.com/montelibero-org/mtl]
+Trustline [https://eurmtl.me/asset/USDM]
+StellarExpert [https://stellar.expert/explorer/public/asset/USDM-GDHDC4GBNPMENZAOBB4NCQ25TGZPDRK6ZGWUGSI22TVFATOLRPSUUSDM]
+USDM USD Montelibero · Stellar [#es]
+Fuentes [#]Trustline [#]Obtener / canjear [#]On-chain [#]Monitoreo [#]FAQ [#]
+RU EN ES
+Datos oficiales del activo · Stellar Public Network
+USDM
+el token dólar de Montelibero en Stellar
+USDM / USD Montelibero es un token estable del MTL Fund en Stellar. Según Monte Wiki y el stellar.toml oficial, el emisor registra la obligación de cambiar USDM uno por uno por USDC en Stellar dentro de las 24 horas posteriores a recibir una solicitud del titular.
+Abrir trustline con QR [https://eurmtl.me/asset/USDM]
+Leer la oferta de USDM [https://montelibero.org/2023/05/12/usdm_token_public_offer/]
+Ver en StellarExpert [https://stellar.expert/explorer/public/asset/USDM-GDHDC4GBNPMENZAOBB4NCQ25TGZPDRK6ZGWUGSI22TVFATOLRPSUUSDM]
+1 USDM → 1 USDC Ruta de canje declarada a través del MTL Fund en Stellar.
+Issuer fijo GDHDC4GB…SUUSDM
+Datos on-chain Supply, trustlines, pagos y mercado vía StellarExpert / Horizon.
+USD Montelibero
+USDM en Stellar
+LIVE
+Código
+USDM
+Copiar
+Issuer
+GDHDC4GBNPMENZAOBB4NCQ25TGZPDRK6ZGWUGSI22TVFATOLRPSUUSDM
+Copiar
+Home domain
+mtl.montelibero.org
+Copiar
+Red
+Stellar Public
+Copiar
+Oferta
+https://montelibero.org/2023/05/12/usdm_token_public_offer/
+Copiar
+Abrir trustline con QR [https://eurmtl.me/asset/USDM]
+StellarExpert [https://stellar.expert/explorer/public/asset/USDM-GDHDC4GBNPMENZAOBB4NCQ25TGZPDRK6ZGWUGSI22TVFATOLRPSUUSDM]
+stellar.toml [https://raw.githubusercontent.com/montelibero-org/mtl/master/.well-known/stellar.toml]
+Dónde verificarlo todo
+Entradas directas: oferta legal, Monte Wiki, GitHub/stellar.toml oficial, página QR verificada para trustline, explorers y el mercado USDM/USDC.
+Oferta pública de USDM
+Texto legal del token USDM en Montelibero.org. La ficha de Montelibero indica que la versión fue aprobada por la decisión №56 del Consejo de Firmantes del MTL Fund el 28/04/2023; luego hubo una corrección técnica del issuer el 19/05/2023 y aclaraciones posteriores de las condiciones de cambio.
+https://montelibero.org/2023/05/12/usdm_token_public_offer/ [https://montelibero.org/2023/05/12/usdm_token_public_offer/]
+Abrir fuente [https://montelibero.org/2023/05/12/usdm_token_public_offer/]
+USDM en Monte Wiki
+Referencia oficial breve: USDM es una stablecoin dólar en Stellar, emitida por el MTL Fund, con obligación de canje 1:1 por USDC dentro de las 24 horas posteriores a la solicitud del titular.
+https://monte.wiki/ru/USDM [https://monte.wiki/ru/USDM]
+Abrir fuente [https://monte.wiki/ru/USDM]
+stellar.toml oficial
+Archivo de metadatos del dominio anchor mtl.montelibero.org desde el repo montelibero-org/mtl. Marca USDM como activo live e incluye issuer, decimales, imagen y descripción de la obligación.
+https://raw.githubusercontent.com/montelibero-org/mtl/master/.well-known/stellar.toml [https://raw.githubusercontent.com/montelibero-org/mtl/master/.well-known/stellar.toml]
+Abrir fuente [https://raw.githubusercontent.com/montelibero-org/mtl/master/.well-known/stellar.toml]
+Repositorio MTL Fund
+Repositorio público del sitio MTL Fund. Su README describe el fondo, enlaces, contactos y trustlines para dividendos, incluido USDM.
+https://github.com/montelibero-org/mtl [https://github.com/montelibero-org/mtl]
+Abrir fuente [https://github.com/montelibero-org/mtl]
+QR verificado para trustline
+La página eurmtl.me/asset/USDM abre una trustline específicamente para USDM con issuer GDHDC4…UUSDM y ofrece botones/QR para billeteras.
+https://eurmtl.me/asset/USDM [https://eurmtl.me/asset/USDM]
+Abrir fuente [https://eurmtl.me/asset/USDM]
+USDM en StellarExpert
+Explorer con resumen on-chain: supply, trustlines, pagos, trades, rating, flags de autorización, estado del issuer y enlaces de cuenta.
+https://stellar.expert/explorer/public/asset/USDM-GDHDC4GBNPMENZAOBB4NCQ25TGZPDRK6ZGWUGSI22TVFATOLRPSUUSDM [https://stellar.expert/explorer/public/asset/USDM-GDHDC4GBNPMENZAOBB4NCQ25TGZPDRK6ZGWUGSI22TVFATOLRPSUUSDM]
+Abrir fuente [https://stellar.expert/explorer/public/asset/USDM-GDHDC4GBNPMENZAOBB4NCQ25TGZPDRK6ZGWUGSI22TVFATOLRPSUUSDM]
+Trusted MTL assets
+Lista de activos confiables del ecosistema Montelibero, útil como comprobación adicional del issuer y del dominio.
+https://stellar-multisig.montelibero.org/public/assets [https://stellar-multisig.montelibero.org/public/assets]
+Abrir fuente [https://stellar-multisig.montelibero.org/public/assets]
+Mercado USDM / USDC
+Enlace directo al par USDM:GDHDC4…UUSDM / USDC:GA5ZSE…KZVN en StellarX.
+https://www.stellarx.com/markets/USDM%3AGDHDC4GBNPMENZAOBB4NCQ25TGZPDRK6ZGWUGSI22TVFATOLRPSUUSDM/USDC%3AGA5ZSEJYB37JRC5AVCIA5MOP4RHTM335X2KGX3IHOJAPP5RE34K4KZVN [https://www.stellarx.com/markets/USDM%3AGDHDC4GBNPMENZAOBB4NCQ25TGZPDRK6ZGWUGSI22TVFATOLRPSUUSDM/USDC%3AGA5ZSEJYB37JRC5AVCIA5MOP4RHTM335X2KGX3IHOJAPP5RE34K4KZVN]
+Abrir fuente [https://www.stellarx.com/markets/USDM%3AGDHDC4GBNPMENZAOBB4NCQ25TGZPDRK6ZGWUGSI22TVFATOLRPSUUSDM/USDC%3AGA5ZSEJYB37JRC5AVCIA5MOP4RHTM335X2KGX3IHOJAPP5RE34K4KZVN]
+Balance del MTL Fund
+Página oficial de estructura de balance del MTL Fund, útil como contexto general de activos y obligaciones del fondo.
+https://montelibero.org/2022/01/14/mtl-fund-balance-structure/ [https://montelibero.org/2022/01/14/mtl-fund-balance-structure/]
+Abrir fuente [https://montelibero.org/2022/01/14/mtl-fund-balance-structure/]
+De qué trata este sitio
+Esta página trata específicamente de USDM / USD Montelibero. El ticker USDM lo usan varios proyectos; aquí la identidad se define por la red Stellar y el issuer.
+$
+Unidad dólar dentro de Montelibero
+USDM se usa como token de liquidación denominado en dólares en el ecosistema Montelibero y en Stellar DEX. No es una cuenta bancaria ni un saldo en dólares a nombre del usuario.
+1:1
+Obligación del emisor
+La fórmula de Wiki y stellar.toml: a solicitud del titular, el emisor se compromete a cambiar USDM por USDC en Stellar uno por uno dentro de 24 horas.
+ID
+El issuer es lo esencial
+Un activo falso puede usar el mismo código USDM. El verdadero USD Montelibero es: code USDM, issuer GDHDC4GBNPMENZAOBB4NCQ25TGZPDRK6ZGWUGSI22TVFATOLRPSUUSDM, domain mtl.montelibero.org.
+≠
+USDM no es USDC
+USDC lo emite otro issuer. USDM es un activo Stellar separado del MTL Fund que puede canjearse por USDC según la oferta.
+Abrir la trustline mediante el QR verificado
+Para los activos Stellar excepto XLM, una cuenta debe añadir explícitamente una trustline. Para USDM, usa eurmtl.me/asset/USDM: muestra el mismo issuer que el stellar.toml oficial y StellarExpert.
+Abrir trustline con QR [https://eurmtl.me/asset/USDM]
+Abre la página QR
+Ve a eurmtl.me/asset/USDM. La página dice “Opening trustline for token USDM” y muestra issuer GDHDC4…UUSDM.
+Verifica el issuer
+Antes de firmar en tu billetera, confirma que asset code = USDM e issuer = GDHDC4GBNPMENZAOBB4NCQ25TGZPDRK6ZGWUGSI22TVFATOLRPSUUSDM.
+Elige billetera
+La página ofrece “Add to Sunce / Lobstr” y “Add to MMWB”. También puedes escanear el QR si tu billetera soporta Stellar URI.
+Firma changeTrust
+Tu billetera crea una operación changeTrust. Nunca introduzcas una seed phrase en un sitio web; la firma debe hacerse solo dentro de tu billetera.
+Recibe USDM
+Tras la confirmación, la cuenta puede recibir USDM, mostrar saldo y operar el token mediante Stellar DEX.
+Cómo obtener, cambiar y canjear USDM
+Rutas directas: comprar en el mercado USDM/USDC, recibir por transferencia, abrir trustline y canjear bajo la oferta pública a través del MTL Fund.
+Obtener / comprar
+Abre una trustline de USDM mediante la página QR verificada.
+Carga tu billetera Stellar con USDC o XLM.
+Usa StellarX u otra interfaz de Stellar DEX para el par USDM/USDC.
+USDM también puede recibirse por transferencia de otra cuenta Stellar o mediante operaciones del ecosistema Montelibero.
+StellarX USDM/USDC [https://www.stellarx.com/markets/USDM%3AGDHDC4GBNPMENZAOBB4NCQ25TGZPDRK6ZGWUGSI22TVFATOLRPSUUSDM/USDC%3AGA5ZSEJYB37JRC5AVCIA5MOP4RHTM335X2KGX3IHOJAPP5RE34K4KZVN]Abrir trustline con QR [https://eurmtl.me/asset/USDM]
+Canjear a USDC
+Base legal: “USDM Token Public Offer” en Montelibero.org.
+Regla declarada: USDM → USDC en Stellar uno por uno dentro de 24 horas después de recibida la solicitud del titular.
+Preguntas operativas del MTL Fund: bot oficial de soporte @mtl_helper_bot.
+Tras la solicitud y el envío de USDM, el titular espera una transferencia equivalente de USDC a la cuenta Stellar especificada/usada en la solicitud.
+Leer la oferta de USDM [https://montelibero.org/2023/05/12/usdm_token_public_offer/]@mtl_helper_bot [https://t.me/mtl_helper_bot]
+Resumen on-chain de USDM
+Los indicadores se cargan desde las API públicas de StellarExpert y Horizon. Si las API no están disponibles, el sitio muestra una captura guardada y enlaces directos a las fuentes.
+Supply
+—
+Trustlines
+—
+Pagos
+—
+Trades
+—
+Rating
+—
+Primera tx
+—
+Best ask USDM/USDC
+—
+Actualizado
+—
+— Actualizar
+StellarExpert [https://stellar.expert/explorer/public/asset/USDM-GDHDC4GBNPMENZAOBB4NCQ25TGZPDRK6ZGWUGSI22TVFATOLRPSUUSDM]Horizon asset [https://horizon.stellar.org/assets?asset_code=USDM&asset_issuer=GDHDC4GBNPMENZAOBB4NCQ25TGZPDRK6ZGWUGSI22TVFATOLRPSUUSDM]API docs [https://stellar.expert/openapi.html]
+Comprobar trustline por dirección
+Introduce una dirección pública de Stellar. La comprobación usa Horizon y no firma nada.
+Comprobar
+Abrir trustline con QR [https://eurmtl.me/asset/USDM]Issuer account [https://stellar.expert/explorer/public/account/GDHDC4GBNPMENZAOBB4NCQ25TGZPDRK6ZGWUGSI22TVFATOLRPSUUSDM]
+Cuenta de monitoreo
+Instantánea estática de pagos USDM entrantes a una cuenta pública de Stellar. La tabla incluye solo meses completos y muestra el porcentaje anualizado frente a una base de 1000 USDM.
+Cuenta
+GCLQ6TKO…ENUMON [https://stellar.expert/explorer/public/account/GCLQ6TKOOJW33ABVG5D5KKJBZANSDW46BCXTSQ3TKLRYFPAVFZENUMON]
+Balance actual
+—
+Pagos totales
+—
+Periodo
+—
+Mes
+Pagos
+USDM
+% anual
+Mostrar todo Abrir cuenta en StellarExpert [https://stellar.expert/explorer/public/account/GCLQ6TKOOJW33ABVG5D5KKJBZANSDW46BCXTSQ3TKLRYFPAVFZENUMON]Instantánea JSON [data/monitoring-account.json]
+Para desarrolladores e integraciones
+Usa estas constantes en una billetera, formulario de pago, bot o widget merchant. El sitio no requiere build y no guarda claves.
+Copiar const USDM = {
+network: 'Public Global Stellar Network ; September 2015',
+code: 'USDM',
+issuer: 'GDHDC4GBNPMENZAOBB4NCQ25TGZPDRK6ZGWUGSI22TVFATOLRPSUUSDM',
+assetId: 'USDM-GDHDC4GBNPMENZAOBB4NCQ25TGZPDRK6ZGWUGSI22TVFATOLRPSUUSDM',
+homeDomain: 'mtl.montelibero.org',
+offer: 'https://montelibero.org/2023/05/12/usdm_token_public_offer/',
+trustline: 'https://eurmtl.me/asset/USDM',
+stellarToml: 'https://mtl.montelibero.org/.well-known/stellar.toml',
+stellarExpert: 'https://stellar.expert/explorer/public/asset/USDM-GDHDC4GBNPMENZAOBB4NCQ25TGZPDRK6ZGWUGSI22TVFATOLRPSUUSDM'
+};
+// Horizon: account balances and assets
+// https://horizon.stellar.org/accounts/{PUBLIC_KEY}
+// https://horizon.stellar.org/assets?asset_code=USDM&asset_issuer=GDHDC4GBNPMENZAOBB4NCQ25TGZPDRK6ZGWUGSI22TVFATOLRPSUUSDM
+// StellarExpert API: asset info, rating, holders, supply
+// https://api.stellar.expert/explorer/public/asset/USDM-GDHDC4GBNPMENZAOBB4NCQ25TGZPDRK6ZGWUGSI22TVFATOLRPSUUSDM/supply
+Integration notes
+En Stellar, la identidad del activo es code + issuer, no solo el ticker.
+Para recibir USDM, la cuenta receptora de un merchant debe tener una trustline.
+Para un formulario de pago, muestra QR de la dirección receptora y memo si tu contabilidad lo requiere.
+Para estadísticas públicas usa StellarExpert API y Horizon; para firmar operaciones usa el SDK oficial de Stellar o la billetera del usuario.
+stellar.toml [https://raw.githubusercontent.com/montelibero-org/mtl/master/.well-known/stellar.toml]StellarExpert API [https://stellar.expert/openapi.html]
+Riesgos y datos técnicos importantes
+Conviene mantener esta sección: genera confianza y reduce la posibilidad de que el usuario confunda USDM con otro activo.
+Riesgo del emisor
+El canje 1:1 se basa en una obligación del MTL Fund. USDM no es USDC de Circle ni un depósito bancario.
+Liquidez y precio DEX
+Stellar DEX puede mostrar un precio superior o inferior a 1 USDC por órdenes y liquidez. El canje bajo la oferta es un mecanismo separado.
+Colisión de tickers
+USDM en CoinMarketCap/CoinGecko normalmente se refiere a otros proyectos. Para USD Montelibero, las claves son Stellar, issuer GDHDC4…UUSDM y dominio mtl.montelibero.org.
+Issuer unlocked / unlimited
+StellarExpert muestra issuer account lock status: unlocked, y stellar.toml contiene is_unlimited=true. Por tanto, el hard cap no es el mecanismo de confianza; importan las reglas del emisor y los reportes públicos.
+Autocustodia
+Las transacciones Stellar son irreversibles. Una seed phrase perdida o envíos a direcciones erróneas normalmente no se recuperan.
+Regulación
+Tokens y stablecoins pueden regularse de forma distinta según jurisdicción. Para uso comercial, evalúa tus obligaciones legales y fiscales.
+FAQ
+Respuestas breves para un usuario que ve USDM por primera vez.
+¿Qué es USDM?
+USDM / USD Montelibero es una stablecoin dólar en Stellar emitida por el MTL Fund. Las fuentes oficiales indican que el emisor se compromete a canjearla por USDC 1:1 en Stellar dentro de 24 horas tras la solicitud del titular.
+¿Dónde está la oferta oficial?
+Enlace directo: https://montelibero.org/2023/05/12/usdm_token_public_offer/ [https://montelibero.org/2023/05/12/usdm_token_public_offer/]. En el sitio está titulada “Токен USDM. Публичная оферта”.
+¿Dónde está el GitHub oficial?
+Repositorio MTL Fund: https://github.com/montelibero-org/mtl [https://github.com/montelibero-org/mtl]. Los metadatos del activo se publican en .well-known/stellar.toml.
+¿Cómo abro una trustline?
+Haz clic en “Abrir trustline con QR” o ve a https://eurmtl.me/asset/USDM [https://eurmtl.me/asset/USDM]. Verifica el issuer y firma changeTrust en tu billetera.
+¿Por qué Stellar exige trustline?
+En Stellar, todo activo emitido excepto XLM requiere una trustline explícita a un issuer concreto. Esto evita recibir activos arbitrarios por accidente.
+¿USDM es lo mismo que USDC?
+No. USDC es un token separado de otro issuer. USDM es un token del MTL Fund que puede canjearse por USDC bajo la oferta.
+¿Puedo comprar USDM con USDC?
+Sí, mediante Stellar DEX, por ejemplo con el enlace directo de StellarX USDM/USDC. El precio de mercado depende del order book.
+¿Cómo evito un falso USDM?
+Comprueba los tres campos juntos: code = USDM, issuer = GDHDC4GBNPMENZAOBB4NCQ25TGZPDRK6ZGWUGSI22TVFATOLRPSUUSDM, domain = mtl.montelibero.org.
+¿Este sitio pide seed phrase?
+No, y no debe hacerlo. La firma de trustline y pagos ocurre en la billetera. Cualquier sitio que pida tu seed phrase es peligroso.
+¿Dónde pregunto sobre el MTL Fund?
+El README del MTL Fund lista el bot de soporte: @mtl_helper_bot [https://t.me/mtl_helper_bot]. Para la base legal de USDM, usa la oferta USDM.
+USDM / USD Montelibero
+Sitio estático de referencia para USDM / USD Montelibero. No guarda claves, no recibe fondos y no es una billetera.
+Offer [https://montelibero.org/2023/05/12/usdm_token_public_offer/]
+Wiki [https://monte.wiki/ru/USDM]
+GitHub [https://github.com/montelibero-org/mtl]
+Trustline [https://eurmtl.me/asset/USDM]
+StellarExpert [https://stellar.expert/explorer/public/asset/USDM-GDHDC4GBNPMENZAOBB4NCQ25TGZPDRK6ZGWUGSI22TVFATOLRPSUUSDM]
