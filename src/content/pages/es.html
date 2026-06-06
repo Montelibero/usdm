@@ -2,7 +2,7 @@
   <header class="site-header">
     <div class="container header-inner">
       <a class="brand" href="#es" aria-label="USDM home"><img src="assets/usdm-logo.png" alt="USDM logo"><div><div class="brand-title">USDM</div><div class="brand-subtitle">USD Montelibero · Stellar</div></div></a>
-      <nav class="nav" aria-label="Sections"><a href="#" data-scroll="sources">Fuentes</a><a href="#" data-scroll="trustline">Trustline</a><a href="#" data-scroll="use">Obtener / canjear</a><a href="#" data-scroll="stats">On-chain</a><a href="#" data-scroll="pools">Pools</a><a href="#" data-scroll="monitoring">Monitoreo</a><a href="#" data-scroll="faq">FAQ</a></nav>
+      <nav class="nav" aria-label="Sections"><a href="#" data-scroll="sources">Fuentes</a><a href="#" data-scroll="trustline">Trustline</a><a href="#" data-scroll="use">Obtener / canjear</a><a href="#" data-scroll="stats">On-chain</a><a href="#" data-scroll="swap">Swap</a><a href="#" data-scroll="pools">Pools</a><a href="#" data-scroll="monitoring">Monitoreo</a><a href="#" data-scroll="faq">FAQ</a></nav>
       <div class="header-actions"><button class="theme-toggle" data-theme-toggle type="button" aria-label="Cambiar tema" title="Cambiar tema"><span data-theme-toggle-icon>☾</span></button><div class="lang-switch" aria-label="Language switcher"><button data-lang="ru" type="button">RU</button><button data-lang="en" type="button">EN</button><button data-lang="es" type="button">ES</button></div></div>
     </div>
   </header>
@@ -172,6 +172,25 @@
         </form>
         <div class="result" role="status"></div>
         <div class="card-links"><a class="btn small" href="https://eurmtl.me/asset/USDM" target="_blank" rel="noopener noreferrer">Abrir trustline con QR</a><a class="btn small" href="https://stellar.expert/explorer/public/account/GDHDC4GBNPMENZAOBB4NCQ25TGZPDRK6ZGWUGSI22TVFATOLRPSUUSDM" target="_blank" rel="noopener noreferrer">Issuer account</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" data-section="swap">
+    <div class="container">
+      <div class="section-head"><div><h2 class="section-title">Cotizaciones swap USDM/EURMTL</h2><p class="section-desc">Cotizaciones live mediante Horizon strict-send: cuánto EURMTL recibes por USDM y cuánto USDM recibes por EURMTL para tamaños 1, 10, 100 y 1000. El precio medio del orderbook usa best bid / best ask.</p></div></div>
+      <div class="card monitoring-card" data-swap>
+        <div class="monitoring-summary">
+          <div><div class="label">Precio medio swap</div><div class="number" data-swap-avg>—</div></div>
+          <div><div class="label">Precio medio orderbook</div><div class="number" data-swap-book>—</div></div>
+          <div><div class="label">Par</div><div class="number">USDM/EURMTL</div></div>
+          <div><div class="label">Actualizado</div><div class="number" data-swap-updated>—</div></div>
+        </div>
+        <div class="swap-grid">
+          <div class="table-wrap"><table class="monitoring-table"><caption>Desde USDM</caption><thead><tr><th>Enviar</th><th>Recibir</th><th>Precio</th></tr></thead><tbody data-swap-sell-table data-empty="Sin cotizaciones"></tbody></table></div>
+          <div class="table-wrap"><table class="monitoring-table"><caption>Desde EURMTL</caption><thead><tr><th>Enviar</th><th>Recibir</th><th>Precio</th></tr></thead><tbody data-swap-buy-table data-empty="Sin cotizaciones"></tbody></table></div>
+        </div>
+        <div class="card-links"><a class="btn small" href="https://viewer.eurmtl.me/asset/USDM-GDHDC4GBNPMENZAOBB4NCQ25TGZPDRK6ZGWUGSI22TVFATOLRPSUUSDM/orderbook?counter=EURMTL-GACKTN5DAZGWXRWB2WLM6OPBDHAMT6SJNGLJZPQMEZBUR4JUGBX2UK7V" target="_blank" rel="noopener noreferrer">Abrir en Stellar Viewer</a></div>
       </div>
     </div>
   </section>

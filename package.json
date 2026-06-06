@@ -5,10 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "npm run data:pools && astro build",
     "preview": "astro preview",
     "test": "node --test test/*.test.mjs",
-    "data:monitoring": "node scripts/fetch-monitoring-account.mjs"
+    "data:monitoring": "node scripts/fetch-monitoring-account.mjs",
+    "data:pools": "node scripts/fetch-usdm-pools.mjs"
   },
   "dependencies": {
     "astro": "6.4.4"

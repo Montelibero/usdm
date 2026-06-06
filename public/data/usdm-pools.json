@@ -1,37 +1,70 @@
 {
-  "generatedAt": "2026-06-06T20:50:00Z",
+  "generatedAt": "2026-06-06T21:24:42.715Z",
   "source": "https://horizon.stellar.org/liquidity_pools/{pool_id}",
   "thresholdUsd": 1000,
   "estimateMethod": "For USDM pools, estimated USD liquidity is calculated as 2 * USDM reserve.",
+  "poolIds": [
+    "3f82380ac929dfb12081d0e04ec099823e296d83c34e473fd2f7aa59111e8728",
+    "49a48dd6aa8b247a553a07acd2957efa85fc0233a40af5bb75cf5d27624d42d9",
+    "a9a81f0eea80cfd8e5026e2c777f7a851822750aa544ae2ae7145d1cbfd08f0e",
+    "ed01a8172b515a12ebe6f969e82a9f481d6e30bb379b3b3d4b41e0ef2a3d2ae0",
+    "a71b735d4243dacf8749061a035c6f3d8db7eaa83f513f4c54acc24d0ae0496b",
+    "37bfcae59fc8c2df3ce8fd1b0fe9742f024aea6a12486961678d31d7a81d7b32",
+    "af9aa1db45df267bd6207fc273a9cb04eb1d480cbc8fd191bec58ff09793afbd",
+    "cc8e282251f0f027c12ac5b599b2155e3381df1961ddde815c88abf2ff9e86da",
+    "6731f57d13b48a9c7cbb65b55c9646b7265265491eb602960407b398c2c2a84b",
+    "857e0bf39c6e8aa775df78af7c861b205d7a43701093e129b7fa91b44325f3c7",
+    "cb94e169a644b1eedc7c7c2af8194632f6be9d4c2a8042678512b9bf8459eb2c",
+    "a9d2e09fce4db02024f867a71640eea49eb2c86d1b0fb089efcddd4b99e0d381",
+    "3d83ee426407a574cee6448af33e1334292e4f45519b61405a615af405ace826"
+  ],
   "pools": [
     {
       "id": "3f82380ac929dfb12081d0e04ec099823e296d83c34e473fd2f7aa59111e8728",
       "pair": "USDM/EURMTL",
       "reserves": [
-        { "code": "USDM", "amount": 39071.8838619 },
-        { "code": "EURMTL", "amount": 32426.4777018 }
+        {
+          "code": "USDM",
+          "amount": 39136.3165334
+        },
+        {
+          "code": "EURMTL",
+          "amount": 32373.2518618
+        }
       ],
-      "usdmReserve": 39071.8838619,
-      "estimatedUsd": 78143.7677238,
+      "usdmReserve": 39136.3165334,
+      "estimatedUsd": 78272.6330668,
       "shares": 35176.3138341
     },
     {
       "id": "49a48dd6aa8b247a553a07acd2957efa85fc0233a40af5bb75cf5d27624d42d9",
       "pair": "XLM/USDM",
       "reserves": [
-        { "code": "XLM", "amount": 150872.4258195 },
-        { "code": "USDM", "amount": 31720.2782759 }
+        {
+          "code": "XLM",
+          "amount": 150036.9459826
+        },
+        {
+          "code": "USDM",
+          "amount": 31897.445252
+        }
       ],
-      "usdmReserve": 31720.2782759,
-      "estimatedUsd": 63440.5565518,
+      "usdmReserve": 31897.445252,
+      "estimatedUsd": 63794.890504,
       "shares": 62338.0063384
     },
     {
       "id": "a9a81f0eea80cfd8e5026e2c777f7a851822750aa544ae2ae7145d1cbfd08f0e",
       "pair": "USDM/SATSMTL",
       "reserves": [
-        { "code": "USDM", "amount": 25707.7651505 },
-        { "code": "SATSMTL", "amount": 41124833.7051743 }
+        {
+          "code": "USDM",
+          "amount": 25707.7651505
+        },
+        {
+          "code": "SATSMTL",
+          "amount": 41124833.7051743
+        }
       ],
       "usdmReserve": 25707.7651505,
       "estimatedUsd": 51415.530301,
@@ -41,8 +74,14 @@
       "id": "ed01a8172b515a12ebe6f969e82a9f481d6e30bb379b3b3d4b41e0ef2a3d2ae0",
       "pair": "ETH/USDM",
       "reserves": [
-        { "code": "ETH", "amount": 11.1071239 },
-        { "code": "USDM", "amount": 17784.5185212 }
+        {
+          "code": "ETH",
+          "amount": 11.1071239
+        },
+        {
+          "code": "USDM",
+          "amount": 17784.5185212
+        }
       ],
       "usdmReserve": 17784.5185212,
       "estimatedUsd": 35569.0370424,
@@ -52,30 +91,48 @@
       "id": "a71b735d4243dacf8749061a035c6f3d8db7eaa83f513f4c54acc24d0ae0496b",
       "pair": "USDM/XRP",
       "reserves": [
-        { "code": "USDM", "amount": 10527.0905855 },
-        { "code": "XRP", "amount": 9408.6501876 }
+        {
+          "code": "USDM",
+          "amount": 10523.5880562
+        },
+        {
+          "code": "XRP",
+          "amount": 9411.7910598
+        }
       ],
-      "usdmReserve": 10527.0905855,
-      "estimatedUsd": 21054.181171,
+      "usdmReserve": 10523.5880562,
+      "estimatedUsd": 21047.1761124,
       "shares": 9827.4756937
     },
     {
       "id": "37bfcae59fc8c2df3ce8fd1b0fe9742f024aea6a12486961678d31d7a81d7b32",
       "pair": "SHX/USDM",
       "reserves": [
-        { "code": "SHX", "amount": 709447.1886297 },
-        { "code": "USDM", "amount": 3403.3631844 }
+        {
+          "code": "SHX",
+          "amount": 710067.0577285
+        },
+        {
+          "code": "USDM",
+          "amount": 3400.4010469
+        }
       ],
-      "usdmReserve": 3403.3631844,
-      "estimatedUsd": 6806.7263688,
+      "usdmReserve": 3400.4010469,
+      "estimatedUsd": 6800.8020938,
       "shares": 48543.2018291
     },
     {
       "id": "af9aa1db45df267bd6207fc273a9cb04eb1d480cbc8fd191bec58ff09793afbd",
       "pair": "GOLD/USDM",
       "reserves": [
-        { "code": "GOLD", "amount": 13.5347175 },
-        { "code": "USDM", "amount": 1683.1820255 }
+        {
+          "code": "GOLD",
+          "amount": 13.5347175
+        },
+        {
+          "code": "USDM",
+          "amount": 1683.1820255
+        }
       ],
       "usdmReserve": 1683.1820255,
       "estimatedUsd": 3366.364051,

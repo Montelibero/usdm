@@ -21,12 +21,14 @@ The runtime container does not need Node.js. Node.js is used only in the Docker 
 - `src/components/LanguagePage.astro` - renders one localized page snapshot
 - `src/content/pages/*.html` - localized HTML content snapshots used by `LanguagePage`
 - `public/assets/styles.css` - page styling
-- `public/assets/app.js` - browser behavior: language switcher, copy buttons, live metrics, trustline check
-- `public/assets/usdm-logo.svg` - site logo and icon
+- `public/assets/app.js` - browser behavior: language switcher, copy buttons, live metrics, trustline check, live liquidity pool refresh
+- `public/assets/usdm-logo.png` - site logo and icon
 - `public/data/monitoring-account.json` - static snapshot for the monitoring account payouts table; includes raw saved payments and regenerated monthly totals
+- `public/data/usdm-pools.json` - build-time fallback snapshot for large USDM liquidity pools
 - `public/robots.txt` - robots policy copied to build output
 - `public/site.webmanifest` - web app manifest copied to build output
 - `scripts/fetch-monitoring-account.mjs` - refreshes the monitoring account snapshot from Horizon
+- `scripts/fetch-usdm-pools.mjs` - refreshes the USDM liquidity pools fallback snapshot from Horizon
 - `Dockerfile` - multi-stage build: Node builds Astro, Caddy serves `dist`
 - `Caddyfile` - Caddy static file server on `:80`
 - `.github/workflows/ci.yml` - CI and GHCR publishing
@@ -52,6 +54,9 @@ Build static site:
 npm run build
 ```
 
+The build runs `npm run data:pools` first, so the Docker image and CI build include
+a fresh fallback snapshot for liquidity pools when Horizon is reachable.
+
 Run tests:
 
 ```sh
@@ -67,6 +72,18 @@ npm run data:monitoring
 This command merges newly available Horizon payments into the existing saved `payments`
 array before regenerating the monthly summary. Do not replace the snapshot with only
 the latest Horizon response, because public Horizon history can be pruned.
+
+Refresh large USDM liquidity pools:
+
+```sh
+npm run data:pools
+```
+
+The pools block is hybrid: browser JavaScript tries to load live Horizon pool data
+on page load and caches it in `localStorage` for one hour. If Horizon is unavailable,
+the page uses `public/data/usdm-pools.json`. Keep that fallback reasonably fresh:
+it is updated during `npm run build` and should also be refreshed manually at least
+monthly if builds are not happening.
 
 The monthly monitoring summary must include complete months only. Keep payments from
 the current incomplete month in the saved raw `payments` array, but do not include that
@@ -123,5 +140,6 @@ On pushes, CI additionally logs in to `ghcr.io` with `GITHUB_TOKEN` and publishe
 - Keep Docker runtime simple: Caddy should serve built static files over HTTP on port 80.
 - Update `test/site.test.mjs` when Docker, CI, or core page expectations change.
 - Refresh `public/data/monitoring-account.json` with `npm run data:monitoring` when updating the monitoring table; preserve the saved `payments` array.
+- Refresh `public/data/usdm-pools.json` with `npm run data:pools` when updating liquidity pool data manually. Do not hand-edit reserves unless Horizon is unavailable and the source is documented.
 - Do not add an incomplete current month to the monitoring table. Percent values in the monitoring table are annualized against the 1000 USDM base.
 - Avoid broad refactors while making content or layout edits.

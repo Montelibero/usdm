@@ -25,6 +25,13 @@ function lineDifferenceRatio(a, b) {
   return changed / Math.max(before.length, after.length, 1);
 }
 
+function stripFeatureSection(html, section) {
+  return html.replace(
+    new RegExp(`<section class="section" data-section="${section}">[\\s\\S]*?<\\/section>`, 'g'),
+    '',
+  );
+}
+
 test('static build contains the USDM reference page content', async () => {
   const html = await readFile(new URL('../dist/index.html', import.meta.url), 'utf8');
 
@@ -61,8 +68,9 @@ test('component refactor preserves site text and links within 10 percent', async
     new URL('./fixtures/site-before-components.txt', import.meta.url),
     'utf8',
   );
+  const currentHtml = await readFile(new URL('../dist/index.html', import.meta.url), 'utf8');
   const current = normalizeHtmlToText(
-    await readFile(new URL('../dist/index.html', import.meta.url), 'utf8'),
+    stripFeatureSection(stripFeatureSection(currentHtml, 'swap'), 'pools'),
   );
   const ratio = lineDifferenceRatio(baseline, current);
 
@@ -94,9 +102,13 @@ test('monitoring account snapshot is available for the monthly payouts block', a
 
 test('large USDM liquidity pools snapshot is available and filtered by liquidity', async () => {
   const html = await readFile(new URL('../dist/index.html', import.meta.url), 'utf8');
+  const packageJson = JSON.parse(
+    await readFile(new URL('../package.json', import.meta.url), 'utf8'),
+  );
   const snapshot = JSON.parse(
     await readFile(new URL('../public/data/usdm-pools.json', import.meta.url), 'utf8'),
   );
+  const script = await readFile(new URL('../public/assets/app.js', import.meta.url), 'utf8');
 
   assert.match(html, /data-section="pools"/);
   assert.match(html, /data-pools-table/);
@@ -106,6 +118,10 @@ test('large USDM liquidity pools snapshot is available and filtered by liquidity
   assert.equal(snapshot.thresholdUsd, 1000);
   assert.equal(snapshot.pools.length, 7);
   assert.ok(snapshot.pools.every((pool) => pool.estimatedUsd >= snapshot.thresholdUsd));
+  assert.match(packageJson.scripts.build, /data:pools/);
+  assert.match(script, /usdm-pools-cache/);
+  assert.match(script, /POOL_CACHE_TTL_MS = 60\*60\*1000/);
+  assert.match(script, /liquidity_pools\//);
   assert.ok(snapshot.pools.some((pool) => pool.pair === 'USDM/EURMTL'));
   assert.ok(snapshot.pools.some((pool) => pool.pair === 'GOLD/USDM'));
   assert.equal(
@@ -114,6 +130,110 @@ test('large USDM liquidity pools snapshot is available and filtered by liquidity
     ),
     false,
   );
+});
+
+test('USDM EURMTL swap quotes block is available', async () => {
+  const html = await readFile(new URL('../dist/index.html', import.meta.url), 'utf8');
+  const script = await readFile(new URL('../public/assets/app.js', import.meta.url), 'utf8');
+
+  assert.match(html, /data-section="swap"/);
+  assert.match(html, /data-swap-sell-table/);
+  assert.match(html, /Свап-стакан USDM\/EURMTL/);
+  assert.match(html, /USDM\/EURMTL swap quotes/);
+  assert.match(html, /Cotizaciones swap USDM\/EURMTL/);
+  assert.match(script, /paths\/strict-send/);
+  assert.match(script, /GACKTN5DAZGWXRWB2WLM6OPBDHAMT6SJNGLJZPQMEZBUR4JUGBX2UK7V/);
+});
+
+test('browser swap quote helper calculates viewer-style average prices', async () => {
+  const script = await readFile(new URL('../public/assets/app.js', import.meta.url), 'utf8');
+  const context = {
+    console,
+    document: {
+      addEventListener() {},
+      querySelector() {
+        return null;
+      },
+      querySelectorAll() {
+        return [];
+      },
+      documentElement: {},
+    },
+    fetch() {
+      throw new Error('network should not run in swap helper test');
+    },
+    history: { replaceState() {} },
+    location: { hash: '' },
+    localStorage: {
+      getItem() {
+        return null;
+      },
+      setItem() {},
+    },
+    navigator: { language: 'en' },
+    setTimeout,
+    clearTimeout,
+  };
+  context.globalThis = context;
+  vm.runInNewContext(script, context);
+
+  const snapshot = context.__USDM_APP__.buildSwapSnapshot({
+    orderBook: {
+      bids: [{ price: '0.8114081' }],
+      asks: [{ price: '0.845262' }],
+    },
+    sellQuotes: [
+      { amount: 1, received: 0.8274075 },
+      { amount: 10, received: 8.2721762 },
+    ],
+    buyQuotes: [
+      { amount: 1, received: 1.206419 },
+      { amount: 10, received: 12.0640661 },
+    ],
+    generatedAt: '2026-06-06T21:00:00Z',
+  });
+
+  assert.equal(snapshot.avgSwapPrice, 0.8281534561137134);
+  assert.equal(snapshot.avgBookPrice, 0.82833505);
+  assert.equal(snapshot.sellRows[0].price, 0.8274075);
+  assert.equal(snapshot.buyRows[0].price, 0.8288994122274268);
+});
+
+test('USDM pools refresh script filters Horizon pools by estimated liquidity', async () => {
+  const { buildPoolsSnapshot } = await import('../scripts/fetch-usdm-pools.mjs');
+  const snapshot = buildPoolsSnapshot({
+    generatedAt: '2026-06-06T20:00:00Z',
+    horizonPools: [
+      {
+        id: 'large',
+        total_shares: '10.0000000',
+        reserves: [
+          {
+            asset: 'USDM:GDHDC4GBNPMENZAOBB4NCQ25TGZPDRK6ZGWUGSI22TVFATOLRPSUUSDM',
+            amount: '600.0000000',
+          },
+          { asset: 'native', amount: '1000.0000000' },
+        ],
+      },
+      {
+        id: 'small',
+        total_shares: '1.0000000',
+        reserves: [
+          {
+            asset: 'USDM:GDHDC4GBNPMENZAOBB4NCQ25TGZPDRK6ZGWUGSI22TVFATOLRPSUUSDM',
+            amount: '400.0000000',
+          },
+          { asset: 'native', amount: '700.0000000' },
+        ],
+      },
+    ],
+  });
+
+  assert.equal(snapshot.pools.length, 1);
+  assert.equal(snapshot.pools[0].id, 'large');
+  assert.equal(snapshot.pools[0].pair, 'USDM/XLM');
+  assert.equal(snapshot.pools[0].estimatedUsd, 1200);
+  assert.equal(snapshot.pools[0].usdmReserve, 600);
 });
 
 test('faq urls are clickable links', async () => {

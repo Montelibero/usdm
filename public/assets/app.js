@@ -3,9 +3,14 @@
   const ASSET_CODE = 'USDM';
   const ASSET_ID = `${ASSET_CODE}-${ISSUER}`;
   const USDC_ISSUER = 'GA5ZSEJYB37JRC5AVCIA5MOP4RHTM335X2KGX3IHOJAPP5RE34K4KZVN';
+  const EURMTL_ISSUER = 'GACKTN5DAZGWXRWB2WLM6OPBDHAMT6SJNGLJZPQMEZBUR4JUGBX2UK7V';
   const API = 'https://api.stellar.expert/explorer/public';
   const HORIZON = 'https://horizon.stellar.org';
   const THEME_KEY = 'usdm-theme';
+  const POOLS_CACHE_KEY = 'usdm-pools-cache';
+  const POOL_CACHE_TTL_MS = 60*60*1000;
+  const SWAP_AMOUNTS = [1,10,100,1000];
+  const POOL_IDS = ['3f82380ac929dfb12081d0e04ec099823e296d83c34e473fd2f7aa59111e8728','49a48dd6aa8b247a553a07acd2957efa85fc0233a40af5bb75cf5d27624d42d9','a9a81f0eea80cfd8e5026e2c777f7a851822750aa544ae2ae7145d1cbfd08f0e','ed01a8172b515a12ebe6f969e82a9f481d6e30bb379b3b3d4b41e0ef2a3d2ae0','a71b735d4243dacf8749061a035c6f3d8db7eaa83f513f4c54acc24d0ae0496b','37bfcae59fc8c2df3ce8fd1b0fe9742f024aea6a12486961678d31d7a81d7b32','af9aa1db45df267bd6207fc273a9cb04eb1d480cbc8fd191bec58ff09793afbd','cc8e282251f0f027c12ac5b599b2155e3381df1961ddde815c88abf2ff9e86da','6731f57d13b48a9c7cbb65b55c9646b7265265491eb602960407b398c2c2a84b','857e0bf39c6e8aa775df78af7c861b205d7a43701093e129b7fa91b44325f3c7','cb94e169a644b1eedc7c7c2af8194632f6be9d4c2a8042678512b9bf8459eb2c','a9d2e09fce4db02024f867a71640eea49eb2c86d1b0fb089efcddd4b99e0d381','3d83ee426407a574cee6448af33e1334292e4f45519b61405a615af405ace826'];
   const fallback = {supply:'259,976',trustlines:'2,552 / 360',payments:'80,692',trades:'1,141,184',rating:'7.3',first:'2023-05-20 16:31 UTC',price:'0.97 USD',updated:'StellarExpert snapshot: 2026-06-06'};
   const uiText = {
     ru: {copied:'Скопировано',copyFailed:'Не удалось скопировать',liveOk:'Данные обновлены из публичных API StellarExpert / Horizon',liveFail:'Публичные API не ответили; показана сохранённая сводка и прямые ссылки на источники',checking:'Проверяю Stellar-аккаунт…',enterAddress:'Введите публичный Stellar-адрес, начинающийся с G.',invalidAddress:'Это не похоже на публичный Stellar-адрес.',notFound:'Аккаунт не найден в Horizon или ещё не активирован.',trustlineYes:b=>`Trustline к USDM открыт. Баланс: ${b} USDM.`,trustlineNo:'На этом аккаунте нет trustline к USDM. Откройте его через проверенную страницу с QR.',networkError:'Не удалось получить данные из Horizon. Используйте прямую ссылку на StellarExpert или повторите позже.'},
@@ -117,6 +122,16 @@
   }
   function shortPool(id){return `${id.slice(0,4)}…${id.slice(-4)}`;}
   function poolUrl(id){return `https://stellar.expert/explorer/public/liquidity-pool/${id}`;}
+  function parsePoolAsset(asset){if(asset==='native') return {code:'XLM',issuer:''}; const [code,issuer='']=String(asset).split(':'); return {code,issuer};}
+  function buildPoolsSnapshot({horizonPools,generatedAt=new Date().toISOString(),thresholdUsd=1000}){
+    const pools=horizonPools.map(pool=>{
+      const reserves=pool.reserves.map(reserve=>({...parsePoolAsset(reserve.asset),amount:Number(reserve.amount)}));
+      const usdm=reserves.find(reserve=>reserve.code==='USDM' && reserve.issuer===ISSUER);
+      const usdmReserve=usdm?.amount||0;
+      return {id:pool.id,pair:reserves.map(reserve=>reserve.code).join('/'),reserves:reserves.map(({code,amount})=>({code,amount})),usdmReserve,estimatedUsd:usdmReserve*2,shares:Number(pool.total_shares)};
+    }).filter(pool=>pool.estimatedUsd>=thresholdUsd).sort((a,b)=>b.estimatedUsd-a.estimatedUsd);
+    return {generatedAt,thresholdUsd,pools};
+  }
   function renderPoolRows(table,rows){
     table.innerHTML=rows.length?rows.map(pool=>{
       const reserves=(pool.reserves||[]).map(reserve=>`${formatNumber(reserve.amount,7)} ${reserve.code}`).join('<br>');
@@ -137,15 +152,81 @@
       if(table) renderPoolRows(table,pools);
     });
   }
-  globalThis.__USDM_APP__={formatTrustlines,buildMetrics,renderMonitoring,renderPools,applyTheme};
+  function assetParams(params,asset,prefix){params.set(`${prefix}_asset_type`,asset.type); if(asset.type!=='native'){params.set(`${prefix}_asset_code`,asset.code); params.set(`${prefix}_asset_issuer`,asset.issuer);}}
+  function assetIdentifier(asset){return asset.type==='native'?'native':`${asset.code}:${asset.issuer}`;}
+  const usdmAsset={code:'USDM',issuer:ISSUER,type:'credit_alphanum4'};
+  const eurmtlAsset={code:'EURMTL',issuer:EURMTL_ISSUER,type:'credit_alphanum12'};
+  async function fetchStrictSendQuote(sourceAsset,destinationAsset,amount){
+    const params=new URLSearchParams();
+    assetParams(params,sourceAsset,'source');
+    params.set('source_amount',String(amount));
+    params.set('destination_assets',assetIdentifier(destinationAsset));
+    params.set('limit','1');
+    const data=await fetchJson(`${HORIZON}/paths/strict-send?${params.toString()}`);
+    const record=data?._embedded?.records?.[0];
+    return record?Number(record.destination_amount):null;
+  }
+  function buildSwapSnapshot({orderBook,sellQuotes,buyQuotes,generatedAt=new Date().toISOString()}){
+    const sellRows=sellQuotes.map(quote=>({amount:quote.amount,received:quote.received,price:quote.received===null?null:quote.received/quote.amount}));
+    const buyRows=buyQuotes.map(quote=>({amount:quote.amount,received:quote.received,price:quote.received===null?null:quote.amount/quote.received}));
+    const firstSell=sellRows.find(row=>row.price!==null);
+    const firstBuy=buyRows.find(row=>row.price!==null);
+    const bestBid=Number(orderBook?.bids?.[0]?.price);
+    const bestAsk=Number(orderBook?.asks?.[0]?.price);
+    const avgSwapPrice=firstSell&&firstBuy?(firstSell.price+firstBuy.price)/2:firstSell?.price??firstBuy?.price??null;
+    const avgBookPrice=Number.isFinite(bestBid)&&Number.isFinite(bestAsk)?(bestBid+bestAsk)/2:Number.isFinite(bestBid)?bestBid:Number.isFinite(bestAsk)?bestAsk:null;
+    return {generatedAt,base:'USDM',counter:'EURMTL',avgSwapPrice,avgBookPrice,sellRows,buyRows};
+  }
+  function renderSwapRows(table,rows){
+    table.innerHTML=rows.length?rows.map(row=>`<tr><td>${formatNumber(row.amount,7)}</td><td>${row.received===null?'—':formatNumber(row.received,7)}</td><td>${row.price===null?'—':formatNumber(row.price,7)}</td></tr>`).join(''):`<tr><td colspan="3">${table.dataset.empty||'No quotes'}</td></tr>`;
+  }
+  function renderSwap(snapshot){
+    $$('[data-swap]').forEach(section=>{
+      const avg=$('[data-swap-avg]',section);
+      const book=$('[data-swap-book]',section);
+      const updated=$('[data-swap-updated]',section);
+      const sellTable=$('[data-swap-sell-table]',section);
+      const buyTable=$('[data-swap-buy-table]',section);
+      if(avg) avg.textContent=snapshot.avgSwapPrice===null?'—':formatNumber(snapshot.avgSwapPrice,7);
+      if(book) book.textContent=snapshot.avgBookPrice===null?'—':formatNumber(snapshot.avgBookPrice,7);
+      if(updated) updated.textContent=snapshot.generatedAt?formatUtcDate(new Date(snapshot.generatedAt)):'—';
+      if(sellTable) renderSwapRows(sellTable,snapshot.sellRows||[]);
+      if(buyTable) renderSwapRows(buyTable,snapshot.buyRows||[]);
+    });
+  }
+  globalThis.__USDM_APP__={formatTrustlines,buildMetrics,renderMonitoring,renderPools,buildPoolsSnapshot,buildSwapSnapshot,renderSwap,applyTheme};
   async function loadMonitoring(){
     try{renderMonitoring(await fetchJson('data/monitoring-account.json'));}
     catch(e){$$('[data-monitoring-table]').forEach(table=>{table.innerHTML=`<tr><td colspan="4">${table.dataset.empty||'No data'}</td></tr>`;});}
   }
   async function loadPools(){
-    try{renderPools(await fetchJson('data/usdm-pools.json'));}
+    try{
+      const fallbackSnapshot=await fetchJson('data/usdm-pools.json');
+      renderPools(fallbackSnapshot);
+      const cached=JSON.parse(localStorage.getItem(POOLS_CACHE_KEY)||'null');
+      if(cached?.snapshot && Date.now()-Number(cached.cachedAt)<POOL_CACHE_TTL_MS){renderPools(cached.snapshot); return;}
+      const results=await Promise.allSettled(POOL_IDS.map(id=>fetchJson(`${HORIZON}/liquidity_pools/${id}`)));
+      const horizonPools=results.filter(result=>result.status==='fulfilled').map(result=>result.value);
+      if(horizonPools.length){
+        const liveSnapshot=buildPoolsSnapshot({horizonPools});
+        renderPools(liveSnapshot);
+        localStorage.setItem(POOLS_CACHE_KEY,JSON.stringify({cachedAt:Date.now(),snapshot:liveSnapshot}));
+      }
+    }
     catch(e){$$('[data-pools-table]').forEach(table=>{table.innerHTML=`<tr><td colspan="6">${table.dataset.empty||'No pools'}</td></tr>`;});}
   }
+  async function loadSwap(){
+    try{
+      const orderParams=new URLSearchParams();
+      assetParams(orderParams,usdmAsset,'selling');
+      assetParams(orderParams,eurmtlAsset,'buying');
+      orderParams.set('limit','20');
+      const orderBook=await fetchJson(`${HORIZON}/order_book?${orderParams.toString()}`);
+      const sellQuotes=await Promise.all(SWAP_AMOUNTS.map(async amount=>({amount,received:await fetchStrictSendQuote(usdmAsset,eurmtlAsset,amount)})));
+      const buyQuotes=await Promise.all(SWAP_AMOUNTS.map(async amount=>({amount,received:await fetchStrictSendQuote(eurmtlAsset,usdmAsset,amount)})));
+      renderSwap(buildSwapSnapshot({orderBook,sellQuotes,buyQuotes}));
+    }catch(e){$$('[data-swap-sell-table],[data-swap-buy-table]').forEach(table=>{table.innerHTML=`<tr><td colspan="3">${table.dataset.empty||'No quotes'}</td></tr>`;});}
+  }
   async function checkTrustline(form){const lang=currentLang(),t=uiText[lang],input=$('input',form),result=$('.result',form.parentElement),address=input.value.trim().toUpperCase(); result.className='result show'; if(!address){result.textContent=t.enterAddress; return;} if(!/^G[A-Z2-7]{55}$/.test(address)){result.textContent=t.invalidAddress; result.classList.add('bad'); return;} result.textContent=t.checking; try{const account=await fetchJson(`${HORIZON}/accounts/${address}`); const balance=(account.balances||[]).find(b=>b.asset_code===ASSET_CODE && b.asset_issuer===ISSUER); if(balance){result.textContent=t.trustlineYes(balance.balance); result.className='result show good';} else {result.textContent=t.trustlineNo; result.className='result show bad';}} catch(err){result.textContent=String(err.message).includes('404')?t.notFound:t.networkError; result.className='result show bad';}}
-  document.addEventListener('DOMContentLoaded',()=>{applyTheme(currentTheme()); setLang(currentLang()); updateMetrics(); loadMonitoring(); loadPools(); $$('[data-theme-toggle]').forEach(btn=>btn.addEventListener('click',()=>applyTheme(currentTheme()==='dark'?'light':'dark',{persist:true}))); $$('.lang-switch button').forEach(btn=>btn.addEventListener('click',()=>setLang(btn.dataset.lang))); window.addEventListener('hashchange',()=>setLang(currentLang())); $$('[data-scroll]').forEach(link=>link.addEventListener('click',e=>{e.preventDefault(); const section=$(`.page.active [data-section="${link.dataset.scroll}"]`); if(section) section.scrollIntoView({behavior:'smooth',block:'start'});})); $$('[data-copy]').forEach(btn=>btn.addEventListener('click',async()=>{const lang=currentLang(); try{await navigator.clipboard.writeText(btn.dataset.copy); toast(uiText[lang].copied);}catch(_){toast(uiText[lang].copyFailed);}})); $$('[data-refresh]').forEach(btn=>btn.addEventListener('click',updateMetrics)); $$('.trustline-form').forEach(form=>form.addEventListener('submit',e=>{e.preventDefault(); checkTrustline(form);}));});
+  document.addEventListener('DOMContentLoaded',()=>{applyTheme(currentTheme()); setLang(currentLang()); updateMetrics(); loadMonitoring(); loadPools(); loadSwap(); $$('[data-theme-toggle]').forEach(btn=>btn.addEventListener('click',()=>applyTheme(currentTheme()==='dark'?'light':'dark',{persist:true}))); $$('.lang-switch button').forEach(btn=>btn.addEventListener('click',()=>setLang(btn.dataset.lang))); window.addEventListener('hashchange',()=>setLang(currentLang())); $$('[data-scroll]').forEach(link=>link.addEventListener('click',e=>{e.preventDefault(); const section=$(`.page.active [data-section="${link.dataset.scroll}"]`); if(section) section.scrollIntoView({behavior:'smooth',block:'start'});})); $$('[data-copy]').forEach(btn=>btn.addEventListener('click',async()=>{const lang=currentLang(); try{await navigator.clipboard.writeText(btn.dataset.copy); toast(uiText[lang].copied);}catch(_){toast(uiText[lang].copyFailed);}})); $$('[data-refresh]').forEach(btn=>btn.addEventListener('click',updateMetrics)); $$('.trustline-form').forEach(form=>form.addEventListener('submit',e=>{e.preventDefault(); checkTrustline(form);}));});
 })();
