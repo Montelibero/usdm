@@ -391,7 +391,13 @@ test('docker image serves the static build with Caddy on port 80', async () => {
   assert.match(dockerfile, /FROM node:/);
   assert.match(dockerfile, /FROM caddy:/);
   assert.match(dockerfile, /COPY --from=build \/app\/dist/);
+  assert.match(dockerfile, /HEALTHCHECK/);
+  assert.match(dockerfile, /\/healthz/);
   assert.match(caddyfile, /:80/);
+  assert.match(caddyfile, /handle \/healthz/);
+  assert.match(caddyfile, /respond "ok" 200/);
+  assert.match(caddyfile, /log\s*\{/);
+  assert.match(caddyfile, /output stdout/);
   assert.match(caddyfile, /file_server/);
 });
 

@@ -4,7 +4,7 @@
 
 USDM is a static reference website for USDM / USD Montelibero. It is built with Astro and served from a Caddy container.
 
-The runtime container does not need Node.js. Node.js is used only in the Docker build stage to generate the static `dist/` output. Caddy serves the generated files over plain HTTP on port 80, intended to sit behind Traefik.
+The runtime container does not need Node.js. Node.js is used only in the Docker build stage to generate the static `dist/` output. Caddy serves the generated files over plain HTTP on port 80, intended to sit behind Traefik. The runtime exposes `/healthz` for Docker health checks and writes Caddy access logs to stdout as JSON.
 
 ## Stack
 
@@ -30,7 +30,7 @@ The runtime container does not need Node.js. Node.js is used only in the Docker 
 - `scripts/fetch-monitoring-account.mjs` - refreshes the monitoring account snapshot from Horizon
 - `scripts/fetch-usdm-pools.mjs` - refreshes the USDM liquidity pools fallback snapshot from Horizon
 - `Dockerfile` - multi-stage build: Node builds Astro, Caddy serves `dist`
-- `Caddyfile` - Caddy static file server on `:80`
+- `Caddyfile` - Caddy static file server on `:80`, `/healthz`, and stdout access logs
 - `.github/workflows/ci.yml` - CI and GHCR publishing
 - `test/site.test.mjs` - smoke tests for static output, Docker config, and CI config
 
@@ -101,6 +101,16 @@ Run Docker image locally:
 docker run --rm -p 8080:80 usdm-site
 ```
 
+Check container health endpoint:
+
+```sh
+curl -fsS http://localhost:8080/healthz
+```
+
+Caddy access logs are emitted to stdout in JSON. In Docker/Traefik deployments,
+collect container stdout to see remote IP, method, URI, status, user agent, and
+referrer fields.
+
 ## Verification Before Finishing
 
 Before claiming a change is complete, run:
@@ -116,6 +126,7 @@ If the change affects the container runtime, also verify HTTP output:
 ```sh
 docker run --rm -d -p 18080:80 --name usdm-site-check usdm-site
 curl -fsS http://localhost:18080/
+curl -fsS http://localhost:18080/healthz
 docker stop usdm-site-check
 ```
 
@@ -137,7 +148,7 @@ On pushes, CI additionally logs in to `ghcr.io` with `GITHUB_TOKEN` and publishe
 - Keep the site static unless there is a clear requirement for runtime server behavior.
 - Prefer static HTML, plain CSS, and small browser JavaScript over adding frontend frameworks.
 - Do not commit generated output: `dist/`, `.astro/`, and `node_modules/` are ignored.
-- Keep Docker runtime simple: Caddy should serve built static files over HTTP on port 80.
+- Keep Docker runtime simple: Caddy should serve built static files over HTTP on port 80, expose `/healthz`, and log access requests to stdout.
 - Update `test/site.test.mjs` when Docker, CI, or core page expectations change.
 - Refresh `public/data/monitoring-account.json` with `npm run data:monitoring` when updating the monitoring table; preserve the saved `payments` array.
 - Refresh `public/data/usdm-pools.json` with `npm run data:pools` when updating liquidity pool data manually. Do not hand-edit reserves unless Horizon is unavailable and the source is documented.

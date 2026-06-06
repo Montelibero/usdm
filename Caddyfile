@@ -1,4 +1,13 @@
 :80 {
+	log {
+		output stdout
+		format json
+	}
+
+	handle /healthz {
+		respond "ok" 200
+	}
+
 	root * /usr/share/caddy
 	file_server
 }
