@@ -115,11 +115,37 @@
       }
     });
   }
-  globalThis.__USDM_APP__={formatTrustlines,buildMetrics,renderMonitoring,applyTheme};
+  function shortPool(id){return `${id.slice(0,4)}…${id.slice(-4)}`;}
+  function poolUrl(id){return `https://stellar.expert/explorer/public/liquidity-pool/${id}`;}
+  function renderPoolRows(table,rows){
+    table.innerHTML=rows.length?rows.map(pool=>{
+      const reserves=(pool.reserves||[]).map(reserve=>`${formatNumber(reserve.amount,7)} ${reserve.code}`).join('<br>');
+      return `<tr><td><a class="mono" href="${poolUrl(pool.id)}" target="_blank" rel="noopener noreferrer">${shortPool(pool.id)}</a></td><td>${pool.pair}</td><td class="mono">${reserves}</td><td>${formatNumber(pool.usdmReserve,2)} USDM</td><td>$${formatNumber(pool.estimatedUsd,2)}</td><td>${formatNumber(pool.shares,2)}</td></tr>`;
+    }).join(''):`<tr><td colspan="6">${table.dataset.empty||'No pools'}</td></tr>`;
+  }
+  function renderPools(data){
+    const pools=[...(data.pools||[])].sort((a,b)=>Number(b.estimatedUsd)-Number(a.estimatedUsd));
+    const total=pools.reduce((sum,pool)=>sum+Number(pool.estimatedUsd||0),0);
+    $$('[data-pools]').forEach(section=>{
+      const count=$('[data-pools-count]',section);
+      const totalEl=$('[data-pools-total]',section);
+      const updated=$('[data-pools-updated]',section);
+      const table=$('[data-pools-table]',section);
+      if(count) count.textContent=formatNumber(pools.length);
+      if(totalEl) totalEl.textContent=`$${formatNumber(total,2)}`;
+      if(updated) updated.textContent=data.generatedAt?formatUtcDate(new Date(data.generatedAt)):'—';
+      if(table) renderPoolRows(table,pools);
+    });
+  }
+  globalThis.__USDM_APP__={formatTrustlines,buildMetrics,renderMonitoring,renderPools,applyTheme};
   async function loadMonitoring(){
     try{renderMonitoring(await fetchJson('data/monitoring-account.json'));}
     catch(e){$$('[data-monitoring-table]').forEach(table=>{table.innerHTML=`<tr><td colspan="4">${table.dataset.empty||'No data'}</td></tr>`;});}
   }
+  async function loadPools(){
+    try{renderPools(await fetchJson('data/usdm-pools.json'));}
+    catch(e){$$('[data-pools-table]').forEach(table=>{table.innerHTML=`<tr><td colspan="6">${table.dataset.empty||'No pools'}</td></tr>`;});}
+  }
   async function checkTrustline(form){const lang=currentLang(),t=uiText[lang],input=$('input',form),result=$('.result',form.parentElement),address=input.value.trim().toUpperCase(); result.className='result show'; if(!address){result.textContent=t.enterAddress; return;} if(!/^G[A-Z2-7]{55}$/.test(address)){result.textContent=t.invalidAddress; result.classList.add('bad'); return;} result.textContent=t.checking; try{const account=await fetchJson(`${HORIZON}/accounts/${address}`); const balance=(account.balances||[]).find(b=>b.asset_code===ASSET_CODE && b.asset_issuer===ISSUER); if(balance){result.textContent=t.trustlineYes(balance.balance); result.className='result show good';} else {result.textContent=t.trustlineNo; result.className='result show bad';}} catch(err){result.textContent=String(err.message).includes('404')?t.notFound:t.networkError; result.className='result show bad';}}
-  document.addEventListener('DOMContentLoaded',()=>{applyTheme(currentTheme()); setLang(currentLang()); updateMetrics(); loadMonitoring(); $$('[data-theme-toggle]').forEach(btn=>btn.addEventListener('click',()=>applyTheme(currentTheme()==='dark'?'light':'dark',{persist:true}))); $$('.lang-switch button').forEach(btn=>btn.addEventListener('click',()=>setLang(btn.dataset.lang))); window.addEventListener('hashchange',()=>setLang(currentLang())); $$('[data-scroll]').forEach(link=>link.addEventListener('click',e=>{e.preventDefault(); const section=$(`.page.active [data-section="${link.dataset.scroll}"]`); if(section) section.scrollIntoView({behavior:'smooth',block:'start'});})); $$('[data-copy]').forEach(btn=>btn.addEventListener('click',async()=>{const lang=currentLang(); try{await navigator.clipboard.writeText(btn.dataset.copy); toast(uiText[lang].copied);}catch(_){toast(uiText[lang].copyFailed);}})); $$('[data-refresh]').forEach(btn=>btn.addEventListener('click',updateMetrics)); $$('.trustline-form').forEach(form=>form.addEventListener('submit',e=>{e.preventDefault(); checkTrustline(form);}));});
+  document.addEventListener('DOMContentLoaded',()=>{applyTheme(currentTheme()); setLang(currentLang()); updateMetrics(); loadMonitoring(); loadPools(); $$('[data-theme-toggle]').forEach(btn=>btn.addEventListener('click',()=>applyTheme(currentTheme()==='dark'?'light':'dark',{persist:true}))); $$('.lang-switch button').forEach(btn=>btn.addEventListener('click',()=>setLang(btn.dataset.lang))); window.addEventListener('hashchange',()=>setLang(currentLang())); $$('[data-scroll]').forEach(link=>link.addEventListener('click',e=>{e.preventDefault(); const section=$(`.page.active [data-section="${link.dataset.scroll}"]`); if(section) section.scrollIntoView({behavior:'smooth',block:'start'});})); $$('[data-copy]').forEach(btn=>btn.addEventListener('click',async()=>{const lang=currentLang(); try{await navigator.clipboard.writeText(btn.dataset.copy); toast(uiText[lang].copied);}catch(_){toast(uiText[lang].copyFailed);}})); $$('[data-refresh]').forEach(btn=>btn.addEventListener('click',updateMetrics)); $$('.trustline-form').forEach(form=>form.addEventListener('submit',e=>{e.preventDefault(); checkTrustline(form);}));});
 })();

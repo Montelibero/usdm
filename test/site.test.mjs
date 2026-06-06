@@ -92,6 +92,30 @@ test('monitoring account snapshot is available for the monthly payouts block', a
   assert.ok(snapshot.payments.length >= snapshot.totals.payments);
 });
 
+test('large USDM liquidity pools snapshot is available and filtered by liquidity', async () => {
+  const html = await readFile(new URL('../dist/index.html', import.meta.url), 'utf8');
+  const snapshot = JSON.parse(
+    await readFile(new URL('../public/data/usdm-pools.json', import.meta.url), 'utf8'),
+  );
+
+  assert.match(html, /data-section="pools"/);
+  assert.match(html, /data-pools-table/);
+  assert.match(html, /Крупные пулы ликвидности USDM/);
+  assert.match(html, /Large USDM liquidity pools/);
+  assert.match(html, /Pools grandes de liquidez USDM/);
+  assert.equal(snapshot.thresholdUsd, 1000);
+  assert.equal(snapshot.pools.length, 7);
+  assert.ok(snapshot.pools.every((pool) => pool.estimatedUsd >= snapshot.thresholdUsd));
+  assert.ok(snapshot.pools.some((pool) => pool.pair === 'USDM/EURMTL'));
+  assert.ok(snapshot.pools.some((pool) => pool.pair === 'GOLD/USDM'));
+  assert.equal(
+    snapshot.pools.some((pool) =>
+      pool.id === 'cc8e282251f0f027c12ac5b599b2155e3381df1961ddde815c88abf2ff9e86da'
+    ),
+    false,
+  );
+});
+
 test('faq urls are clickable links', async () => {
   const html = await readFile(new URL('../dist/index.html', import.meta.url), 'utf8');
   const faqBlocks = [...html.matchAll(/<div class="faq">([\s\S]*?)<\/div>/g)].map(
@@ -330,6 +354,80 @@ test('browser metrics formatter handles StellarExpert metric records', async () 
       updated: '2026-06-06 19:46 UTC',
     },
   );
+});
+
+test('browser liquidity pool renderer paints verified pool rows', async () => {
+  const script = await readFile(new URL('../public/assets/app.js', import.meta.url), 'utf8');
+  const state = { html: '', count: '', total: '' };
+  const table = {
+    dataset: { empty: 'No pools' },
+    set innerHTML(value) {
+      state.html = value;
+    },
+  };
+  const section = {
+    querySelector(selector) {
+      if (selector === '[data-pools-table]') return table;
+      if (selector === '[data-pools-count]') return { set textContent(value) { state.count = value; } };
+      if (selector === '[data-pools-total]') return { set textContent(value) { state.total = value; } };
+      if (selector === '[data-pools-updated]') return { textContent: '' };
+      return null;
+    },
+    querySelectorAll() {
+      return [];
+    },
+  };
+  const context = {
+    console,
+    document: {
+      addEventListener() {},
+      querySelector() {
+        return null;
+      },
+      querySelectorAll(selector) {
+        return selector === '[data-pools]' ? [section] : [];
+      },
+      documentElement: {},
+    },
+    fetch() {
+      throw new Error('network should not run in pool renderer test');
+    },
+    history: { replaceState() {} },
+    location: { hash: '' },
+    localStorage: {
+      getItem() {
+        return null;
+      },
+      setItem() {},
+    },
+    navigator: { language: 'en' },
+    setTimeout,
+    clearTimeout,
+  };
+  context.globalThis = context;
+  vm.runInNewContext(script, context);
+
+  context.__USDM_APP__.renderPools({
+    pools: [
+      {
+        id: '3f82380ac929dfb12081d0e04ec099823e296d83c34e473fd2f7aa59111e8728',
+        pair: 'USDM/EURMTL',
+        usdmReserve: 39071.8838619,
+        estimatedUsd: 78143.7677238,
+        shares: 35176.3138341,
+        reserves: [
+          { code: 'USDM', amount: 39071.8838619 },
+          { code: 'EURMTL', amount: 32426.4777018 },
+        ],
+      },
+    ],
+  });
+
+  assert.match(state.html, /3f82…8728/);
+  assert.match(state.html, /USDM\/EURMTL/);
+  assert.match(state.html, /78,143\.77/);
+  assert.equal(state.count, '1');
+  assert.equal(state.total, '$78,143.77');
 });
 
 test('browser theme helper applies and persists the selected theme', async () => {
